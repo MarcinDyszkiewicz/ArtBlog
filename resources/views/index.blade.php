@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', '| Homepage')
+
 @section('content')
 
     <div class="row">
@@ -13,7 +15,7 @@
                     @foreach($posts as $post)
                 <tbody>
                 <tr>
-                    <td>{{$post->title}}</td>
+                    <td><a href="{{ route('postSingle', $post->id) }}">{{$post->title}}</a></td>
 
 
                 </tr>

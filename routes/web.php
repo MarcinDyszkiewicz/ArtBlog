@@ -21,3 +21,11 @@ Route::get('/postcreate', 'PostController@postCreate')->name('postCreate');
 Route::get('/poststore', 'PostController@postStore');
 
 Route::post('/poststore', 'PostController@postStore')->name('postStore');
+
+Route::get('/postsingle/{id}', 'PostController@postSingle')->name('postSingle');
+
+Route::get('/postedit/{id}', 'PostController@postEdit')->name('postEdit');
+
+Route::get('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
+
+Route::post('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
