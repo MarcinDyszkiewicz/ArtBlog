@@ -104,7 +104,34 @@ class PostController extends Controller
      */
     public function postUpdate(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'artist_name' => 'required|max:80',
+            'title' => 'required|min:2|max:100',
+            'description' => 'required|min:5|max:500'
+
+        ));
+
+        $post = Post::find($id);
+
+        $post->artist_name = $request->input('artist_name');
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+//        $post->id_user=0;
+
+        if($request->hasFile('img')) {
+            $img = $request->file('img');
+            $filename = $post->artist_name . time() . '_'. $string = str_random(8) . '.' . $img->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($img)->save($location);
+
+            $post->img = $filename;
+        }
+
+        $post->save();
+
+        Session::flash('success','The post was edited!');
+
+        return redirect()->route('postSingle', $post->id);
     }
 
     /**
@@ -116,6 +143,12 @@ class PostController extends Controller
 
     public function postDestroy($id)
     {
-        //
+        $post= Post::find($id);
+//        $post->tags()->detach();
+
+        $post->delete($id);
+
+        Session::flash('success', "The post was successfully deleted");
+        return redirect()->route('index');
     }
 }

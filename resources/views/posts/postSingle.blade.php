@@ -13,6 +13,7 @@
                 <th>Description</th>
                 <th>Image</th>
                 <th>Created At</th>
+                <th></th>
 
 
                 </thead>
@@ -23,6 +24,10 @@
                         <td>{{$post->description}}</td>
                         <td>{{$post->img}}</td>
                         <td>{{$post->created_at}}</td>
+                        <td>{{ Form::open(array('route' => ['postDestroy', $post->id], 'method' => 'DELETE'))}}
+                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) }}
+                                {{Form::close()}}</td>
+
 
 
                     </tr>

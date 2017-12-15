@@ -13,7 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'PostController@index')->name('homepage');
+Route::get('/', 'PostController@index')->name('index');
 
 //Post CRUD
 Route::get('/postcreate', 'PostController@postCreate')->name('postCreate');
@@ -28,4 +28,6 @@ Route::get('/postedit/{id}', 'PostController@postEdit')->name('postEdit');
 
 Route::get('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
 
-Route::post('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
+Route::put('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
+
+Route::delete('/postdestroy/{id}', 'PostController@postDestroy')->name('postDestroy');
