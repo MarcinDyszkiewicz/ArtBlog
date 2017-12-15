@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+        return view('index', ['posts' => $posts]);
     }
 
     /**
@@ -36,6 +38,13 @@ class PostController extends Controller
      */
     public function postStore(Request $request)
     {
+        $this->validate($request, array(
+           'artist_name' => 'required|max:80',
+            'title' => 'required|min:2|max:100',
+            'description' => 'required|min:5|max:500'
+
+        ));
+
         $post = new Post;
 
         $post->artist_name = $request->artist_name;
@@ -68,7 +77,9 @@ class PostController extends Controller
      */
     public function postShow($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.postSingle', ['post' => $post]);
     }
 
     /**
@@ -100,6 +111,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function postDestroy($id)
     {
         //
