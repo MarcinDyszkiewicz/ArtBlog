@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -23,7 +25,7 @@ class PostController extends Controller
      */
     public function postCreate()
     {
-        return view('');
+        return view('posts.postCreate');
     }
 
     /**
@@ -34,7 +36,28 @@ class PostController extends Controller
      */
     public function postStore(Request $request)
     {
-        //
+        $post = new Post;
+
+        $post->artist_name = $request->artist_name;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->id_user=0;
+
+        if($request->hasFile('img')) {
+            $img = $request->file('img');
+            $filename = $post->artist_name . time() . '_'. $string = str_random(8) . '.' . $img->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($img)->save($location);
+
+            $post->img = $filename;
+        }
+
+        $post->save();
+
+        Session::flash('success','The post was added!');
+
+        return redirect()->route('postCreate');
+
     }
 
     /**

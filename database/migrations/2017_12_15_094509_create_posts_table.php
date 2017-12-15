@@ -18,7 +18,8 @@ class CreatePostsTable extends Migration
             $table->integer('id_user');
             $table->string('artist_name');
             $table->string('title');
-            $table->string('content');
+            $table->string('description');
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }
