@@ -14,22 +14,30 @@
 use Illuminate\Support\Facades\Route;
 
 //Authentication
-Route::get('auth/login', 'Auth\LoginController@showLoginForm');
-Route::post('auth/login', 'Auth\LoginController@login')->name('login');
-Route::get('auth/logout', 'Auth\LoginController@logout');
+Route::get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('auth/login', 'Auth\LoginController@login');
+Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
 
-//Registration routes
+//Registration
 Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('auth/register', 'Auth\RegisterController@register');
 
+//Password reset
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 //Homepage
-Route::get('/', 'PostController@index')->name('index');
+Route::get('/', 'PagesController@index')->name('index');
 
 //Pages
 
+
 //Slug URL Single Post
-Route::get('/post/{slug}', ['as' => 'postSingle', 'uses' =>'PostController@postSingle'])
+Route::get('/post/{slug}', ['as' => 'postSingle', 'uses' =>'PagesController@postSingle'])
     ->where('slug', '[\w\d\-\_]+');
+
 
 
 //Post CRUD

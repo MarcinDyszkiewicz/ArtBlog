@@ -15,6 +15,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 <body>
+@include('partials._navBar')
+
 {{ Auth::check() ? "Logged In" : "Logged Out"}}
 
 @yield('content')

@@ -13,19 +13,6 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $posts = Post::all();
-
-        return view('index', ['posts' => $posts]);
-    }
-
-    public function postSingle($slug){
-
-        $post = Post::where('slug', '=', $slug)->first();
-
-        return view('posts.postSingle', ['post' => $post]);
-    }
 
         //Middleware
         public function __construct()
