@@ -51,6 +51,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->id_user=0;
+        $post->slug = $post->artist_name . time() . '_' . $string = str_random(6);
 
         if($request->hasFile('img')) {
             $img = $request->file('img');
@@ -75,11 +76,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function postSingle($id)
+    public function postShow($id)
     {
         $post = Post::find($id);
 
-        return view('posts.postSingle', ['post' => $post]);
+        return view('posts.postShow', ['post' => $post]);
     }
 
     /**
@@ -150,5 +151,12 @@ class PostController extends Controller
 
         Session::flash('success', "The post was successfully deleted");
         return redirect()->route('index');
+    }
+
+    public function postSingle($slug){
+
+        $post = Post::where('slug', '=', $slug)->first();
+
+        return view('posts.postSingle', ['post' => $post]);
     }
 }

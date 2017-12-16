@@ -13,7 +13,24 @@
 
 use Illuminate\Support\Facades\Route;
 
+//Authentication
+Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+Route::post('auth/login', 'LoginController@Login');
+Route::post('auth/logout', 'LoginController@Logout');
+
+//Registration routes
+Route::post('auth/register', 'LoginController@showRegistrationForm');
+Route::get('auth/register', 'LoginController@register');
+
+//Homepage
 Route::get('/', 'PostController@index')->name('index');
+
+//Pages
+
+//Slug URL Single Post
+Route::get('/post/{slug}', ['as' => 'postSingle', 'uses' =>'PostController@postSingle'])
+    ->where('slug', '[\w\d\-\_]+');
+
 
 //Post CRUD
 Route::get('/postcreate', 'PostController@postCreate')->name('postCreate');
@@ -22,7 +39,7 @@ Route::get('/poststore', 'PostController@postStore');
 
 Route::post('/poststore', 'PostController@postStore')->name('postStore');
 
-Route::get('/postsingle/{id}', 'PostController@postSingle')->name('postSingle');
+Route::get('/postsingle/{id}', 'PostController@postShow')->name('postShow');
 
 Route::get('/postedit/{id}', 'PostController@postEdit')->name('postEdit');
 

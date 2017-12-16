@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', '| Single Post')
+@section('title', "| $post->artist_name")
 
 @section('content')
 
@@ -13,25 +13,21 @@
                 <th>Description</th>
                 <th>Image</th>
                 <th>Created At</th>
-                <th></th>
 
 
                 </thead>
-                    <tbody>
-                    <tr>
-                        <td>{{$post->artist_name}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->description}}</td>
-                        <td>{{$post->img}}</td>
-                        <td>{{$post->created_at}}</td>
-                        <td>{{ Form::open(array('route' => ['postDestroy', $post->id], 'method' => 'DELETE'))}}
-                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) }}
-                                {{Form::close()}}</td>
+                <tbody>
+                <tr>
+                    <td>{{$post->artist_name}}</td>
+                    <td>{{$post->title}}</td>
+                    <td>{{$post->description}}</td>
+                    <td>{{$post->img}}</td>
+                    <td>{{$post->created_at}}</td>
 
 
 
-                    </tr>
-                    </tbody>
+                </tr>
+                </tbody>
             </table>
 
         </div>
