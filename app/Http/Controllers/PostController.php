@@ -20,11 +20,21 @@ class PostController extends Controller
         return view('index', ['posts' => $posts]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function postSingle($slug){
+
+        $post = Post::where('slug', '=', $slug)->first();
+
+        return view('posts.postSingle', ['post' => $post]);
+    }
+
+        //Middleware
+        public function __construct()
+        {
+            $this->middleware('auth');
+        }
+
+
+    //CRUD
     public function postCreate()
     {
         return view('posts.postCreate');
@@ -153,10 +163,5 @@ class PostController extends Controller
         return redirect()->route('index');
     }
 
-    public function postSingle($slug){
 
-        $post = Post::where('slug', '=', $slug)->first();
-
-        return view('posts.postSingle', ['post' => $post]);
-    }
 }
