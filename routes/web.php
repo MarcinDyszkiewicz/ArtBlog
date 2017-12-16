@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 //Authentication
 Route::get('auth/login', 'Auth\LoginController@showLoginForm');
-Route::post('auth/login', 'LoginController@Login');
-Route::post('auth/logout', 'LoginController@Logout');
+Route::post('auth/login', 'Auth\LoginController@login');
+Route::get('auth/logout', 'Auth\LoginController@logout');
 
 //Registration routes
-Route::post('auth/register', 'LoginController@showRegistrationForm');
-Route::get('auth/register', 'LoginController@register');
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('auth/register', 'Auth\RegisterController@register');
 
 //Homepage
 Route::get('/', 'PostController@index')->name('index');
