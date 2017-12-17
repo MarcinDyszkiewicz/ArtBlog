@@ -60,6 +60,8 @@ Route::delete('/postdestroy/{id}', 'PostController@postDestroy')->name('postDest
 //Category CRUD
 Route::get('/categorylist', 'CategoryController@categoryList')->name('categoryList');
 
+Route::get('/categorycreate', 'CategoryController@categoryCreate')->name('categoryCreate')->middleware('auth');
+
 Route::get('/categorystore', 'CategoryController@categoryStore')->middleware('auth');
 
 Route::post('/categorystore', 'CategoryController@categoryStore')->name('categoryStore')->middleware('auth');

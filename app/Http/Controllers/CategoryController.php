@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -23,15 +24,28 @@ class CategoryController extends Controller
     }
 
 
+    //CRUD
+    public function categoryCreate()
+    {
+        return view('categories.categoryCreate');
+    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function categoryStore(Request $request)
     {
+        $this->validate($request, array(
+        'name' => 'required|max:100'
+    ));
+
+        $category = new Category;
+
+        $category->name = $request->name;
+
+        $category->save();
+
+
+        Session::flash('success','The category was added!');
+
+        return redirect()->route('categoryList');
 
     }
 
