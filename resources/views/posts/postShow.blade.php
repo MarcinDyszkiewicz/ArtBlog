@@ -10,6 +10,7 @@
                 <thead>
                 <th>Artist Name</th>
                 <th>Title</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Image</th>
                 <th>Created At</th>
@@ -22,6 +23,7 @@
                     <tr>
                         <td>{{$post->artist_name}}</td>
                         <td>{{$post->title}}</td>
+                        <td>{{$post->category->name}}</td>
                         <td>{{$post->description}}</td>
                         <td>{{$post->img}}</td>
                         <td>{{$post->created_at}}</td>

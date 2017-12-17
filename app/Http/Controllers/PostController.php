@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
@@ -20,7 +21,9 @@ class PostController extends Controller
     //CRUD
     public function postCreate()
     {
-        return view('posts.postCreate');
+        $categories = Category::all();
+
+        return view('posts.postCreate', ['categories'=>$categories]);
     }
 
 
@@ -29,6 +32,7 @@ class PostController extends Controller
         $this->validate($request, array(
            'artist_name' => 'required|max:80',
             'title' => 'required|min:2|max:100',
+            'category_id' => 'required|integer',
             'description' => 'required|min:5|max:500'
 
         ));
@@ -37,6 +41,7 @@ class PostController extends Controller
 
         $post->artist_name = $request->artist_name;
         $post->title = $request->title;
+        $post->category_id = $request->category_id;
         $post->description = $request->description;
         $post->id_user=0;
         $post->slug = $post->artist_name . time() . '_' . $string = str_random(6);
@@ -54,7 +59,7 @@ class PostController extends Controller
 
         Session::flash('success','The post was added!');
 
-        return redirect()->route('postCreate');
+        return redirect()->route('postSingle', $post->slug);
 
     }
 
@@ -70,8 +75,13 @@ class PostController extends Controller
     public function postEdit($id)
     {
         $post = Post::find($id);
+        $categories = Category::all();
+//        $cats = array();
+//        foreach ($categories as $category) {
+//            $cats[$categories->id] = $category->name;
+//        }
 
-        return view('posts.postEdit', ['post' => $post]);
+        return view('posts.postEdit', ['post' => $post, 'categories'=>$categories]);
     }
 
 
@@ -80,6 +90,7 @@ class PostController extends Controller
         $this->validate($request, array(
             'artist_name' => 'required|max:80',
             'title' => 'required|min:2|max:100',
+            'category_id' => 'required|integer',
             'description' => 'required|min:5|max:500'
 
         ));
@@ -88,6 +99,7 @@ class PostController extends Controller
 
         $post->artist_name = $request->input('artist_name');
         $post->title = $request->input('title');
+        $post->category_id = $request->input('category_id');
         $post->description = $request->input('description');
 //        $post->id_user=0;
 
@@ -104,7 +116,7 @@ class PostController extends Controller
 
         Session::flash('success','The post was edited!');
 
-        return redirect()->route('postSingle', $post->id);
+        return redirect()->route('postSingle', $post->slug);
     }
 
 

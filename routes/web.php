@@ -32,7 +32,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/', 'PagesController@index')->name('index');
 
 //Pages
-
+Route::get('/postlist', 'PagesController@postList')->name('postList');
 
 //Slug URL Single Post
 Route::get('/post/{slug}', ['as' => 'postSingle', 'uses' =>'PagesController@postSingle'])

@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="{{Request::is('/') ? "active" : ""}}"><a href="{{route('index')}}">Home</a></li>
-                {{--<li class="{{Request::is('/postlist') ? "active" : ""}}"><a href="{{route('postList')}}">New Posts <span class="sr-only">(current)</span></a></li>--}}
+                <li class="{{Request::is('postlist') ? "active" : ""}}"><a href="{{route('postList')}}">New Posts</a></li>
                 <li class="{{Request::is('categorylist') ? "active" : ""}}"><a href="{{route('categoryList')}}">Categories</a></li>
                 {{--<li class="{{Request::is('/artistlist') ? "active" : ""}}"><a href="{{route('artistList')}}">Home <span class="sr-only">(current)</span></a></li>--}}
                 {{--<li class="{{Request::is('/about') ? "active" : ""}}"><a href="{{route('about')}}">About <span class="sr-only">(current)</span></a></li>--}}

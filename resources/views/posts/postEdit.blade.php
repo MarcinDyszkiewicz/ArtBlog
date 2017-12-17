@@ -17,6 +17,13 @@
             {{Form::label('title', 'Title:')}}
             {{Form::text('title', null, array('class' => 'form-control'))}}
 
+            {{Form::label('category_id', 'Category:')}}
+            <select class="form-control" name="category_id">
+                @foreach($categories as $category)
+                    <option {{ ($category->id == $post->category_id) ? 'selected' : '' }} value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+
             {{Form::label('description', 'Description:')}}
             {{Form::textarea('description', null, array('class' => 'form-control'))}}
 

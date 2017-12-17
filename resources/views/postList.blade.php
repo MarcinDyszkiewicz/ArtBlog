@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "| $post->artist_name")
+@section('title', '| All Posts')
 
 @section('content')
 
@@ -13,23 +13,21 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>Image</th>
-                <th>Category</th>
                 <th>Created At</th>
+
 
 
                 </thead>
                 <tbody>
+                @foreach($posts as $post)
                 <tr>
                     <td>{{$post->artist_name}}</td>
-                    <td>{{$post->title}}</td>
+                    <td><a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></td>
                     <td>{{$post->category->name}}</td>
                     <td>{{$post->description}}</td>
                     <td>{{$post->img}}</td>
-                    <td>{{$post->category->name}}</td>
                     <td>{{$post->created_at}}</td>
-
-
-
+                @endforeach
                 </tr>
                 </tbody>
             </table>

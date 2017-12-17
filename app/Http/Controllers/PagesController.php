@@ -22,7 +22,12 @@ class PagesController extends Controller
         return view('posts.postSingle', ['post' => $post]);
     }
 
+    public function postList()
+    {
+        $posts = Post::all();
 
+        return view('postList', ['posts' => $posts]);
+    }
 
 
 }
