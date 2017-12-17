@@ -19,7 +19,7 @@ Route::post('auth/login', 'Auth\LoginController@login');
 Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
 
 //Registration
-Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('auth/register', 'Auth\RegisterController@register');
 
 //Password reset
@@ -47,7 +47,7 @@ Route::get('/poststore', 'PostController@postStore');
 
 Route::post('/poststore', 'PostController@postStore')->name('postStore');
 
-Route::get('/postsingle/{id}', 'PostController@postShow')->name('postShow');
+Route::get('/postshow/{id}', 'PostController@postShow')->name('postShow');
 
 Route::get('/postedit/{id}', 'PostController@postEdit')->name('postEdit');
 

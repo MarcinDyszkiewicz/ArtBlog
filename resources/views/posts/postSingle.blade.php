@@ -12,6 +12,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Image</th>
+                <th>Category</th>
                 <th>Created At</th>
 
 
@@ -22,6 +23,7 @@
                     <td>{{$post->title}}</td>
                     <td>{{$post->description}}</td>
                     <td>{{$post->img}}</td>
+                    <td>{{$post->category->name}}</td>
                     <td>{{$post->created_at}}</td>
 
 

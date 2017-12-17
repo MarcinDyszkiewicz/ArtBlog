@@ -23,7 +23,8 @@
                 {{ Form::submit('Login', ['class' => 'btn btn-primary']) }}
 
                     <p><a href="{{ url('password/reset') }}">Forgot My Password</a> </p>
-
+                <br>
+                    <p><a href="{{ route('register') }}">Register</a> </p>
             {{ Form::close() }}
             </div>
         </div>
