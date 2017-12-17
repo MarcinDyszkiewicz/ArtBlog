@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
@@ -55,9 +56,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function categoryShow($id)
     {
-        //
+        $category =  Category::find($id);
+
+
+        return view('categories.categoryShow', ['category' => $category]);
     }
 
     /**
@@ -66,7 +70,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function categoryEdit($id)
     {
         //
     }
@@ -78,7 +82,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function categoryUpdate(Request $request, $id)
     {
         //
     }
@@ -89,7 +93,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function categoryDestroy($id)
     {
         //
     }
