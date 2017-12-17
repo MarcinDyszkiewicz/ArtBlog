@@ -56,3 +56,20 @@ Route::get('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate')
 Route::put('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
 
 Route::delete('/postdestroy/{id}', 'PostController@postDestroy')->name('postDestroy');
+
+//Category CRUD
+Route::get('/categorylist', 'CategoryController@categoryList')->name('categoryList');
+
+Route::get('/categorystore', 'CategoryController@categoryStore')->middleware('auth');
+
+Route::post('/categorystore', 'CategoryController@categoryStore')->name('categoryStore')->middleware('auth');
+
+Route::get('/categoryshow/{id}', 'CategoryController@categoryShow')->name('categoryShow');
+
+Route::get('/categoryedit/{id}', 'CategoryController@categoryEdit')->name('categoryEdit');
+
+Route::get('/categoryupdate/{id}', 'CategoryController@categoryUpdate')->name('categoryUpdate');
+
+Route::put('/categoryupdate/{id}', 'CategoryController@categoryUpdate')->name('categoryUpdate');
+
+Route::delete('/categorydestroy/{id}', 'CategoryController@categoryDestroy')->name('categoryDestroy');
