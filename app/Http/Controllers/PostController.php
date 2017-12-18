@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
@@ -22,8 +23,9 @@ class PostController extends Controller
     public function postCreate()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('posts.postCreate', ['categories'=>$categories]);
+        return view('posts.postCreate', ['categories'=>$categories, 'tags'=>$tags]);
     }
 
 
@@ -57,6 +59,8 @@ class PostController extends Controller
 
         $post->save();
 
+        $post->tags()->sync($request->tags, false);
+
         Session::flash('success','The post was added!');
 
         return redirect()->route('postSingle', $post->slug);
@@ -76,12 +80,13 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categories = Category::all();
+        $tags = Tag::all();
 //        $cats = array();
 //        foreach ($categories as $category) {
 //            $cats[$categories->id] = $category->name;
 //        }
 
-        return view('posts.postEdit', ['post' => $post, 'categories'=>$categories]);
+        return view('posts.postEdit', ['post' => $post, 'categories'=>$categories, 'tags'=>$tags]);
     }
 
 
@@ -113,6 +118,14 @@ class PostController extends Controller
         }
 
         $post->save();
+
+        if(isset($request->tags)){
+        $post->tags()->sync($request->tags);
+    } else {
+        $post->tags()->sync(array());
+    }
+
+
 
         Session::flash('success','The post was edited!');
 

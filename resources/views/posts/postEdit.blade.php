@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <link href="/css/select2.min.css" rel="stylesheet">
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>Edit your post</h1>
@@ -24,6 +26,13 @@
                 @endforeach
             </select>
 
+            {{Form::label('tags', 'Tags:')}}
+            <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                @foreach($tags as $tag)
+                    <option {{ ($post->id == $tag->id) ? 'selected' : '' }} value="{{$tag->id}}">{{$tag->name}}</option>
+                @endforeach
+            </select>
+
             {{Form::label('description', 'Description:')}}
             {{Form::textarea('description', null, array('class' => 'form-control'))}}
 
@@ -37,7 +46,28 @@
         </div>
     </div>
 
-    @endsection
+@endsection
+
+@section('scripts')
+@endsection
+
+@section('footer')
+    {{--<link href="{{ asset('/public/js/select2.min.js') }}">--}}
+
+    <script src="/js/select2.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+
+        $('#mySelect2').val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
+
+
+    </script>
+
+
+@endsection
 
 
 

@@ -14,6 +14,7 @@
                 <th>Description</th>
                 <th>Image</th>
                 <th>Category</th>
+                <th>Tags</th>
                 <th>Created At</th>
 
 
@@ -26,6 +27,7 @@
                     <td>{{$post->description}}</td>
                     <td>{{$post->img}}</td>
                     <td>{{$post->category->name}}</td>
+                    @foreach($post->tags as $tag)<td> <span class="label label-default">{{$tag->name}}</span></td>@endforeach
                     <td>{{$post->created_at}}</td>
 
 

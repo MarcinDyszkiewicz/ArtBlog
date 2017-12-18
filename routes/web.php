@@ -75,3 +75,22 @@ Route::get('/categoryupdate/{id}', 'CategoryController@categoryUpdate')->name('c
 Route::put('/categoryupdate/{id}', 'CategoryController@categoryUpdate')->name('categoryUpdate');
 
 Route::delete('/categorydestroy/{id}', 'CategoryController@categoryDestroy')->name('categoryDestroy');
+
+//Tags CRUD
+Route::get('/taglist', 'TagController@tagList')->name('tagList');
+
+Route::get('/tagcreate', 'TagController@tagCreate')->name('tagCreate')->middleware('auth');
+
+Route::get('/tagstore', 'TagController@tagStore')->middleware('auth');
+
+Route::post('/tagstore', 'TagController@tagStore')->name('tagStore')->middleware('auth');
+
+Route::get('/tagshow/{id}', 'TagController@tagShow')->name('tagShow');
+
+Route::get('/tagedit/{id}', 'TagController@tagEdit')->name('tagEdit');
+
+Route::get('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate');
+
+Route::put('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate');
+
+Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy');
