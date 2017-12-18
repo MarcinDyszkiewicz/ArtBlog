@@ -15,7 +15,7 @@
                     @foreach($posts as $post)
                 <tbody>
                 <tr>
-                    <td><a href="{{ route('postSingle', $post->id) }}">{{$post->title}}</a></td>
+                    <td><a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></td>
 
 
                 </tr>
