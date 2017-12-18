@@ -17,9 +17,9 @@
                 <li class="{{Request::is('/') ? "active" : ""}}"><a href="{{route('index')}}">Home</a></li>
                 <li class="{{Request::is('postlist') ? "active" : ""}}"><a href="{{route('postList')}}">New Posts</a></li>
                 <li class="{{Request::is('categorylist') ? "active" : ""}}"><a href="{{route('categoryList')}}">Categories</a></li>
-                {{--<li class="{{Request::is('/artistlist') ? "active" : ""}}"><a href="{{route('artistList')}}">Home <span class="sr-only">(current)</span></a></li>--}}
-                {{--<li class="{{Request::is('/about') ? "active" : ""}}"><a href="{{route('about')}}">About <span class="sr-only">(current)</span></a></li>--}}
-                {{--<li class="{{Request::is('/contact') ? "active" : ""}}"><a href="{{route('contact')}}">Contact <span class="sr-only">(current)</span></a></li>--}}
+                {{--<li class="{{Request::is('artistlist') ? "active" : ""}}"><a href="{{route('artistList')}}">Home <span class="sr-only">(current)</span></a></li>--}}
+                {{--<li class="{{Request::is('about') ? "active" : ""}}"><a href="{{route('about')}}">About <span class="sr-only">(current)</span></a></li>--}}
+                <li class="{{Request::is('contact') ? "active" : ""}}"><a href="{{route('contactPage')}}">Contact</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

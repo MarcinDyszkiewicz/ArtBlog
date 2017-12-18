@@ -34,6 +34,11 @@ Route::get('/', 'PagesController@index')->name('index');
 //Pages
 Route::get('/postlist', 'PagesController@postList')->name('postList');
 
+Route::get('/contact', 'PagesController@contactPage')->name('contactPage');
+
+//contact form
+Route::post('/contact', 'PagesController@contactPost')->name('contactPost');
+
 //Slug URL Single Post
 Route::get('/post/{slug}', ['as' => 'postSingle', 'uses' =>'PagesController@postSingle'])
     ->where('slug', '[\w\d\-\_]+');
@@ -94,3 +99,4 @@ Route::get('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->mid
 Route::put('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->middleware('auth');
 
 Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy')->middleware('auth');
+

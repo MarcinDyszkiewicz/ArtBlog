@@ -5,7 +5,6 @@
 
 
 @section('content')
-    <link href="{{ asset('css/parsley.css') }}">
 
     <section id="main">
         <div class="container">
@@ -28,29 +27,24 @@
                     </div>
                     <div class="form-group">
                         <label name=message">Message:</label>
-                        <textarea id="message" name="message" class="form-control" required="" minlength="10" maxlength="2000"></textarea>
+                        <textarea id="message" name="message" class="form-control" required="" minlength="10" maxlength="3000"></textarea>
                     </div>
 
                     <input type="submit" class="submit" value="Send Message">
                 </form>
             </div>
-
-            <aside id="sidebar">
-                <div class="dark">
-                    <h3>Marcin Dyszkiewicz</h3>
-                    <p>sdfdfsdfsdfs</p>
-                </div>
-            </aside>
         </div>
     </section>
 
 
 
 @endsection
-@section('footer')
 
-@endsection
 
 @section('scripts')
-    <link href="{{ asset('js/parsley.min.js') }}">
+    <script src="/js/parsley.min.js"></script>
+@endsection
+
+@section('footer')
+
 @endsection

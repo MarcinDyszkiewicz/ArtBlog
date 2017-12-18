@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
+use Mail;
 
 class PagesController extends Controller
 {
@@ -27,6 +28,11 @@ class PagesController extends Controller
         $posts = Post::all();
 
         return view('postList', ['posts' => $posts]);
+    }
+
+    public function contactPage(){
+
+        return view('contact');
     }
 
     public function contactPost(Request $request) {
@@ -52,6 +58,6 @@ class PagesController extends Controller
         });
 
         Session::flash('success', 'Thank You. Your Email was Sent');
-        return redirect()->route('contact');
+        return redirect()->route('contactPage');
     }
 }

@@ -35,7 +35,7 @@ class PostController extends Controller
            'artist_name' => 'required|max:80',
             'title' => 'required|min:2|max:100',
             'category_id' => 'required|integer',
-            'description' => 'required|min:5|max:500'
+            'description' => 'required|min:5|max:200'
 
         ));
 
