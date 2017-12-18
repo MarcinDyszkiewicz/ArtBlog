@@ -87,10 +87,10 @@ Route::post('/tagstore', 'TagController@tagStore')->name('tagStore')->middleware
 
 Route::get('/tagshow/{id}', 'TagController@tagShow')->name('tagShow');
 
-Route::get('/tagedit/{id}', 'TagController@tagEdit')->name('tagEdit');
+Route::get('/tagedit/{id}', 'TagController@tagEdit')->name('tagEdit')->middleware('auth');
 
-Route::get('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate');
+Route::get('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->middleware('auth');
 
-Route::put('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate');
+Route::put('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->middleware('auth');
 
-Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy');
+Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy')->middleware('auth');
