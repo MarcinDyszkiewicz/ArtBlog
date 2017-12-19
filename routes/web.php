@@ -101,5 +101,11 @@ Route::put('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->mid
 Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy')->middleware('auth');
 
 //Comments
-Route::post('/comment/{post_id}', 'CommentsController@commentStore')->name('commentStore');
+Route::post('/commentpost/{post_id}', 'CommentsController@commentStore')->name('commentStore');
+Route::get('/commentedit/{id}', 'CommentsController@commentEdit')->name('commentEdit');
+Route::get('/commenteditadmin/{id}', 'CommentsController@commentEditAdmin')->name('commentEditAdmin')->middleware('auth');
+Route::put('/commentupdate/{id}', 'CommentsController@commentUpdate')->name('commentUpdate')->middleware('auth');
+Route::delete('/commentdestroy/{id}', 'CommentsController@commentDestroy')->name('commentDestroy')->middleware('auth');
+Route::delete('/commentdestroyadmin/{id}', 'CommentsController@commentDestroyAdmin')->name('commentDestroyAdmin')->middleware('auth');
+
 

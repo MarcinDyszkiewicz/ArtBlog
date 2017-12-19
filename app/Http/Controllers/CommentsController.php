@@ -62,7 +62,7 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function commentShow($id)
     {
         //
     }
@@ -73,9 +73,11 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function commentEdit($id)
     {
-        //
+        $comment = Comment::find($id);
+
+        return view('comments.commentEdit', ['comment'=>$comment]);
     }
 
     /**
@@ -85,7 +87,7 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function commentUpdate(Request $request, $id)
     {
         //
     }
@@ -96,7 +98,7 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function commentDestroy($id)
     {
         //
     }
