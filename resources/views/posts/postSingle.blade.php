@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "| $post->artist_name")
+@section('title', "| $post->artist_name $post->title")
 
 @section('content')
 
@@ -39,6 +39,16 @@
         </div>
     </div>
 
+    <div class="row">
+        <div id="comment-form" class="col-md-8 col-md-offset-2">
+            {{Form::open(['route' => ['commentStore', $post->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
+
+            {{Form::label('comment_body', 'Comment:')}}
+            {{Form::text('comment_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
+
+            {{Form::submit('Add comment', ['class' => 'btn btn-success btn-sm'])}}
+        </div>
+    </div>
 
 
 @endsection

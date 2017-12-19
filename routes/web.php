@@ -100,3 +100,6 @@ Route::put('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->mid
 
 Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy')->middleware('auth');
 
+//Comments
+Route::post('/comment/{post_id}', 'CommentsController@commentStore')->name('commentStore');
+
