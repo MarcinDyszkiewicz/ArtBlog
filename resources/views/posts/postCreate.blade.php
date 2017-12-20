@@ -5,6 +5,8 @@
 @section('content')
 
     <link href="/css/select2.min.css" rel="stylesheet">
+    <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -34,7 +36,9 @@
 
         {{Form::label('description', 'Description:')}}
         {{Form::textarea('description', null, array('class' => 'form-control', 'required' => '', 'minlength' =>"5", 'maxlength' =>"1000"))}}
-
+            <script>
+                CKEDITOR.replace( 'description' );
+            </script>
         {{Form::submit('Create Post', array('class'=>'btn btn-success btn-lg btn-block'))}}
 
     {!! Form::close() !!}

@@ -16,6 +16,7 @@
                 <tbody>
                 <tr>
                     <td><a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></td>
+                    <td>{!!str_limit(strip_tags($post->description), $limit = 50, $end = '...')!!}</td>
 
 
                 </tr>

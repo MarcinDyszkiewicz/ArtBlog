@@ -24,7 +24,7 @@
                         <td>{{$post->artist_name}}</td>
                         <td>{{$post->title}}</td>
                         <td>{{$post->category->name}}</td>
-                        <td>{{$post->description}}</td>
+                        <td>{!!$post->description!!}</td>
                         <td>{{$post->img}}</td>
                         <td>{{$post->created_at}}</td>
                         <td><a href="{{url('post/'.$post->slug)}}">{{url('post/'.$post->slug)}}</a> </td>
