@@ -12,7 +12,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h1>Edit your post</h1>
 
-                {!! Form::model($post, array('route' => ['postUpdate', $post->id], 'method' => 'PUT')) !!}
+        {!! Form::model($post, array('route' => ['postUpdate', $post->id], 'method' => 'PUT', 'files' => true)) !!}
 
 
             {{Form::label('artist_name', 'Artist Name:')}}
@@ -20,6 +20,10 @@
 
             {{Form::label('title', 'Title:')}}
             {{Form::text('title', null, array('class' => 'form-control input-lg', 'minlength' =>"2", 'maxlength' =>"100"))}}
+
+            <img src="{{asset('/images/' . $post->img)}}" height="100" width="200"/>
+            {{Form::label('img', 'Change Image:')}}
+            {{Form::file('img')}}
 
             {{Form::label('category_id', 'Category:')}}
             <select class="form-control" name="category_id">

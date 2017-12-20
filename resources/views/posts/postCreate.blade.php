@@ -12,13 +12,16 @@
         <div class="col-md-8 col-md-offset-2">
             <h1>Create New Post</h1>
 
-    {!! Form::open(array('route' => 'postStore', 'data-parsley-validate' => '')) !!}
+    {!! Form::open(array('route' => 'postStore', 'data-parsley-validate' => '', 'files' => true)) !!}
 
         {{Form::label('artist_name', 'Artist Name:')}}
         {{Form::text('artist_name', null, array('class' => 'form-control input-lg', 'required' => '', 'maxlength' =>"80"))}}
 
         {{Form::label('title', 'Title:')}}
         {{Form::text('title', null, array('class' => 'form-control input-lg', 'required' => '', 'minlength' =>"2", 'maxlength' =>"100"))}}
+
+        {{Form::label('img', 'Upload Image:')}}
+        {{Form::file('img')}}
 
         {{Form::label('category_id', 'Category:')}}
         <select class="form-control" name="category_id">

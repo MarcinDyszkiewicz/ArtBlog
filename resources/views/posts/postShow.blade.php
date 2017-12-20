@@ -25,7 +25,7 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->category->name}}</td>
                         <td>{!!$post->description!!}</td>
-                        <td>{{$post->img}}</td>
+                        <td><img src="{{asset('/images/' . $post->img)}}"/></td>
                         <td>{{$post->created_at}}</td>
                         <td><a href="{{url('post/'.$post->slug)}}">{{url('post/'.$post->slug)}}</a> </td>
                         <td>{{ Form::open(array('route' => ['postDestroy', $post->id], 'method' => 'DELETE'))}}

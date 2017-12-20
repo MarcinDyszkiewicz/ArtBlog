@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
 use Purifier;
+use Image;
 
 class PostController extends Controller
 {
@@ -47,13 +48,13 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->description = Purifier::clean($request->description);
         $post->id_user=0;
-        $post->slug = $post->artist_name . time() . '_' . $string = str_random(6);
+        $post->slug = $post->artist_name . '_' . $post->title . '_'. time();
 
         if($request->hasFile('img')) {
             $img = $request->file('img');
-            $filename = $post->artist_name . time() . '_'. $string = str_random(8) . '.' . $img->getClientOriginalExtension();
+            $filename = $post->artist_name . '_' . $post->title . '_'. $string = str_random(6) . '.' . $img->getClientOriginalExtension();
             $location = public_path('/images/' . $filename);
-            Image::make($img)->save($location);
+            Image::make($img)->resize(800, 400)->save($location);
 
             $post->img = $filename;
         }
@@ -111,9 +112,9 @@ class PostController extends Controller
 
         if($request->hasFile('img')) {
             $img = $request->file('img');
-            $filename = $post->artist_name . time() . '_'. $string = str_random(8) . '.' . $img->getClientOriginalExtension();
+            $filename = $post->artist_name . '_' . $post->title . '_'. $string = str_random(6) . '.' . $img->getClientOriginalExtension();
             $location = public_path('/images/' . $filename);
-            Image::make($img)->save($location);
+            Image::make($img)->resize(800, 400)->save($location);
 
             $post->img = $filename;
         }
