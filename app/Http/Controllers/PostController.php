@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -44,7 +45,7 @@ class PostController extends Controller
         $post->artist_name = $request->artist_name;
         $post->title = $request->title;
         $post->category_id = $request->category_id;
-        $post->description = $request->description;
+        $post->description = Purifier::clean($request->description);
         $post->id_user=0;
         $post->slug = $post->artist_name . time() . '_' . $string = str_random(6);
 
@@ -105,7 +106,7 @@ class PostController extends Controller
         $post->artist_name = $request->input('artist_name');
         $post->title = $request->input('title');
         $post->category_id = $request->input('category_id');
-        $post->description = $request->input('description');
+        $post->description = Purifier::clean($request->input('description'));
 //        $post->id_user=0;
 
         if($request->hasFile('img')) {
