@@ -16,7 +16,7 @@
 
             {{Form::submit('Edit Comment', ['class' => 'btn btn-success btn-sm'])}}
 
-            {!! Html::linkRoute('postShow', 'Cancel', array($comment->post_id), array('class' => 'btn btn-danger btn=block')) !!}
+            {!! Html::linkRoute('postShow', 'Cancel', array($comment->post_id), array('class' => 'btn btn-danger')) !!}
 
             {!! Form::close() !!}
 
