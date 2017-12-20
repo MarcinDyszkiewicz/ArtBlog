@@ -105,6 +105,7 @@ Route::post('/commentpost/{post_id}', 'CommentsController@commentStore')->name('
 Route::get('/commentedit/{id}', 'CommentsController@commentEdit')->name('commentEdit');
 Route::get('/commenteditadmin/{id}', 'CommentsController@commentEditAdmin')->name('commentEditAdmin')->middleware('auth');
 Route::put('/commentupdate/{id}', 'CommentsController@commentUpdate')->name('commentUpdate')->middleware('auth');
+Route::get('/commentdelete/{id}', 'CommentsController@commentDelete')->name('commentDelete')->middleware('auth');
 Route::delete('/commentdestroy/{id}', 'CommentsController@commentDestroy')->name('commentDestroy')->middleware('auth');
 Route::delete('/commentdestroyadmin/{id}', 'CommentsController@commentDestroyAdmin')->name('commentDestroyAdmin')->middleware('auth');
 

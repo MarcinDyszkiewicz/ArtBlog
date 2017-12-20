@@ -49,7 +49,7 @@
                 <div class="comment">
                     <p>{{$comment->comment_body}}</p>
                     <p><a href="{{route('commentEdit', $comment->id)}}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span>  </a>
-                       <a href="" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>  </a></p>
+                       <a href="{{route('commentDelete', $comment->id)}}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span>  </a></p>
 
 
                     @endforeach

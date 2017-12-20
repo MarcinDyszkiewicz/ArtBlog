@@ -35,9 +35,9 @@
                 </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
 
-                </div>
-            </div>
             <div class="row">
                 <div id="comment-form" class="col-md-8 col-md-offset-2">
                     @foreach($post->comments as $comment)
@@ -45,11 +45,9 @@
                             <p>{{$comment->comment_body}}</p>
                             @endforeach
                         </div>
+                </div>
+            </div>
 
-
-
-        </div>
-    </div>
 
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2">

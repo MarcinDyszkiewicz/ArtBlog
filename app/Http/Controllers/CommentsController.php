@@ -92,14 +92,23 @@ class CommentsController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function commentDelete($id)
+    {
+        $comment = Comment::find($id);
+
+        return view('comments.commentDelete', ['comment'=>$comment]);
+    }
+
+
     public function commentDestroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $post_id = $comment->post_id;
+        $comment->delete();
+
+        Session::flash('success', 'Comment was deleted');
+
+        return redirect()->route('postShow', $post_id);
     }
 }
