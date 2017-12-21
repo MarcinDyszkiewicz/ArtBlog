@@ -9,6 +9,7 @@ use App\Post;
 use Illuminate\Support\Facades\Session;
 use Purifier;
 use Image;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -37,7 +38,8 @@ class PostController extends Controller
            'artist_name' => 'required|max:80',
             'title' => 'required|min:2|max:100',
             'category_id' => 'required|integer',
-            'description' => 'required|min:5|max:200'
+            'description' => 'required|min:5|max:200',
+            'img'   => 'required|image'
 
         ));
 
@@ -115,8 +117,11 @@ class PostController extends Controller
             $filename = $post->artist_name . '_' . $post->title . '_'. $string = str_random(6) . '.' . $img->getClientOriginalExtension();
             $location = public_path('/images/' . $filename);
             Image::make($img)->resize(800, 400)->save($location);
+            $oldFileName = $post->img;
 
             $post->img = $filename;
+            Storage::delete($oldFileName);
+
         }
 
         $post->save();
@@ -139,6 +144,7 @@ class PostController extends Controller
     {
         $post= Post::find($id);
         $post->tags()->detach();
+        Storage::delete($post->img);
 
         $post->delete($id);
 
