@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Marcin Dyszkiewicz">
 
     <title>Art Blog @yield('title')</title>
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/parsley.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -17,6 +19,13 @@
 </head>
 <body>
 @include('partials._navBar')
+    <section id="showcase" class="col-md-8 col-md-offset-2" >
+        <div class="container">
+            <h1>Art Blog</h1>
+        </div>
+    </section>
+
+
 
 {{ Auth::check() ? "Logged In" : "Logged Out"}}
 
@@ -32,5 +41,8 @@
 <script src="/js/bootstrap.min.js"></script>
 
 @yield('footer')
+<footer>
+    <p>Marcin Dyszkiewicz Web Developer, Copyright &copy; 2017-2018 </p>
+</footer>
 </body>
 </html>
