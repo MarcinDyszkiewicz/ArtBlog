@@ -21,7 +21,9 @@
     color: #ffffff;
     line-height: 70px;
     height: 70px;
-
+}
+.navbar-nav>li>.dropdown-menu{
+    background-color: #1b6d85;
 }
 
 .navbar-brand,
@@ -40,4 +42,18 @@
 #showcase h1 {
     margin-top: 40px;
     font-size: 60px;
+}
+
+
+
+.post-index{
+    padding:10px;
+    text-align: center;
+    background-color: #b2dba1;
+}
+
+.post-index-single{
+    padding:50px;
+    text-align: center;
+    border: double 10px;
 }

@@ -29,6 +29,8 @@
 
 {{ Auth::check() ? "Logged In" : "Logged Out"}}
 
+<p>{{ Auth::guard('admin') ? "Logged as Admin" : ""}}</p>
+
 @yield('content')
 
 

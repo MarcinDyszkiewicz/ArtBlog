@@ -14,9 +14,20 @@
 use Illuminate\Support\Facades\Route;
 
 //Authentication
+    //user
 Route::get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('auth/login', 'Auth\LoginController@login');
 Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
+
+    //admin
+Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('adminLogin');
+Route::post('admin/login', 'Auth\AdminLoginController@login')->name('adminLoginSubmit');
+Route::get('admin/logout', 'Auth\AdminLoginController@logout')->name('adminLogout');
+Route::get('admin', 'Auth\AdminLoginController@index')->name('adminDashboard');
+
+//Admin Registration
+Route::get('admin/register', 'Auth\AdminLoginController@showRegistrationForm')->name('adminRegister');
+Route::post('admin/register', 'Auth\AdminLoginController@register');
 
 //Registration
 Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
@@ -84,7 +95,7 @@ Route::delete('/categorydestroy/{id}', 'CategoryController@categoryDestroy')->na
 //Tags CRUD
 Route::get('/taglist', 'TagController@tagList')->name('tagList');
 
-Route::get('/tagcreate', 'TagController@tagCreate')->name('tagCreate')->middleware('auth');
+Route::get('/tagcreate', 'TagController@tagCreate')->name('tagCreate')->middleware('auth:admin');
 
 Route::get('/tagstore', 'TagController@tagStore')->middleware('auth');
 
