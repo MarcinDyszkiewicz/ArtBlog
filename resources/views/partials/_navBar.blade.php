@@ -37,7 +37,7 @@
 
                 @elseif(Auth::guard('admin'))
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ $admin->name }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello Admin <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Create New Post</a></li>
                             <li><a href="#">My Posts</a></li>

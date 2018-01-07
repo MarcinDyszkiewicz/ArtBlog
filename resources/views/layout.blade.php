@@ -26,10 +26,16 @@
     </section>
 
 
+@if(Auth::check())
+    Logged as User
+@elseif(Auth::guard('admin'))
+    Logged as Admin
+@else
+    Logged Out
+@endif
+{{--{{ Auth::check() ? "Logged as User" : "Logged Out"}}--}}
 
-{{ Auth::check() ? "Logged In" : "Logged Out"}}
-
-<p>{{ Auth::guard('admin') ? "Logged as Admin" : ""}}</p>
+{{--<p>{{ Auth::guard('admin') ? "Logged as Admin" : ""}}</p>--}}
 
 @yield('content')
 

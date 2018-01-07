@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
@@ -12,8 +13,16 @@ class PagesController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $admin = Admin::all();
 
-        return view('index', ['posts' => $posts]);
+        return view('index', ['posts' => $posts, 'admin' => $admin]);
+    }
+
+    public function navBar()
+    {
+        $admin = Admin::all();
+
+        return view('partials._navBar', ['admin' => $admin]);
     }
 
     public function postSingle($slug){
