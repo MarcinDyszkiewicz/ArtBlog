@@ -35,7 +35,7 @@
                     </ul>
                 </li>
 
-                @elseif(Auth::guard('admin'))
+                @elseif(Auth::guard('admin')->check())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello Admin <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -43,7 +43,7 @@
                             <li><a href="#">My Posts</a></li>
                             <li><a href="#">My Account</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{route('logout')}}">Logout</a></li>
+                            <li><a href="{{route('adminLogout')}}">Logout</a></li>
                         </ul>
                     </li>
 

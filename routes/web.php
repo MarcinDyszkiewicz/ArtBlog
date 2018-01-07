@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Route;
     //user
 Route::get('auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('auth/login', 'Auth\LoginController@login');
-Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('auth/logout', 'Auth\LoginController@userLogout')->name('logout');
 
     //admin
 Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('adminLogin');
 Route::post('admin/login', 'Auth\AdminLoginController@login')->name('adminLoginSubmit');
-Route::get('admin/logout', 'Auth\AdminLoginController@logout')->name('adminLogout');
-Route::get('admin', 'Auth\AdminLoginController@index')->name('adminDashboard');
+Route::get('admin/logout', 'Auth\AdminLoginController@adminLogout')->name('adminLogout');
+Route::get('admin/dashboard', 'PagesController@adminDashboard')->name('adminDashboard');
 
 //Admin Registration
 Route::get('admin/register', 'Auth\AdminLoginController@showRegistrationForm')->name('adminRegister');

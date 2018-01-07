@@ -69,4 +69,9 @@ class PagesController extends Controller
         Session::flash('success', 'Thank You. Your Email was Sent');
         return redirect()->route('contactPage');
     }
+
+    public function adminDashboard(){
+
+        return view('admin.adminDashboard');
+    }
 }

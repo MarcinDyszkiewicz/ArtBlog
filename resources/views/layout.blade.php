@@ -28,7 +28,7 @@
 
 @if(Auth::check())
     Logged as User
-@elseif(Auth::guard('admin'))
+@elseif(Auth::guard('admin')->check())
     Logged as Admin
 @else
     Logged Out

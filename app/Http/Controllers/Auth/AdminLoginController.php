@@ -12,15 +12,15 @@ use Illuminate\Validation\ValidationException;
 
 class AdminLoginController extends Controller
 {
-    Public function showLoginForm()
+    public function __construct()
+    {
+        $this->middleware('guest:admin')->except( 'adminLogout');
+    }
+
+    public function showLoginForm()
     {
 
         return view('admin.adminLogin');
-    }
-
-    public function __construct()
-    {
-        $this->middleware('guest:admin')->except('logout');
     }
 
     public function login(Request $request)
@@ -106,5 +106,12 @@ class AdminLoginController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function adminLogout()
+    {
+        Auth::guard('admin')->logout();
+
+        return redirect('/contact');
     }
 }
