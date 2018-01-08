@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-header">Reset Password</div>
+                <div class="panel-header">Admin Reset Password</div>
 
                     <div class="panel-body">
 

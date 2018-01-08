@@ -11,11 +11,9 @@ class AdminResetPasswordNotification extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
+    public $token;
+
+
     public function __construct($token)
     {
         $this->token = $token;

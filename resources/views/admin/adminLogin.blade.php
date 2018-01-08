@@ -22,7 +22,7 @@
                 <br>
                 {{ Form::submit('Login as Admin', ['class' => 'btn btn-primary']) }}
 
-                <p><a href="{{ url('password/reset') }}">Forgot My Password</a> </p>
+                <p><a href="{{ url('admin/password/reset') }}">Forgot My Password</a> </p>
                 <br>
                 {{ Form::close() }}
             </div>
