@@ -24,6 +24,11 @@ Route::get('admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admi
 Route::post('admin/login', 'Auth\AdminLoginController@login')->name('adminLoginSubmit');
 Route::get('admin/logout', 'Auth\AdminLoginController@adminLogout')->name('adminLogout');
 Route::get('admin/dashboard', 'PagesController@adminDashboard')->name('adminDashboard');
+//Admin password reset
+Route::get('admin/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+Route::post('admin/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+Route::get('admin/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+Route::post('admin/password/reset', 'Auth\AdminResetPasswordController@reset');
 
 //Admin Registration
 Route::get('admin/register', 'Auth\AdminLoginController@showRegistrationForm')->name('adminRegister');
