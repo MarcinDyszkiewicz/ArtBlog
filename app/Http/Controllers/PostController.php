@@ -34,6 +34,9 @@ class PostController extends Controller
 
     public function postStore(Request $request)
     {
+
+
+//        die(var_dump($request->tags));
         $this->validate($request, array(
            'artist_name' => 'required|max:80',
             'title' => 'required|min:2|max:100',

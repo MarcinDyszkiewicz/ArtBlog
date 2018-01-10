@@ -31,7 +31,7 @@
         </select>
 
         {{Form::label('tags', 'Tags:')}}
-        <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+        <select class="js-example-basic-multiple form-control" name="tags" multiple="multiple">
             @foreach($tags as $tag)
                 <option value="{{$tag->id}}">{{$tag->name}}</option>
             @endforeach
@@ -63,9 +63,9 @@
 
     <script src="/js/select2.min.js"></script>
 <script>
-
+    var testererere;
     $(document).ready(function() {
-        $('.js-example-basic-multiple').select2({
+        testererere = $('.js-example-basic-multiple').select2({
             tags:true,
             maximumSelectionLength: 20
         });
