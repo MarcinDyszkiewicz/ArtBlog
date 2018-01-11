@@ -21,11 +21,13 @@
                 {{ Form::checkbox('remember')}} {{ Form::label('remember', 'Remember Me')}}
                 <br>
                 {{ Form::submit('Login', ['class' => 'btn btn-primary']) }}
-
+                    {{ Form::close() }}
                     <p><a href="{{ url('password/reset') }}">Forgot My Password</a> </p>
                 <br>
                     <p><a href="{{ route('register') }}">Register</a> </p>
-            {{ Form::close() }}
+                 <br>
+                    <p><a href="{{ route('adminLogin') }}">Admin panel</a> </p>
+
             </div>
         </div>
     </div>

@@ -125,4 +125,5 @@ Route::get('/commentdelete/{id}', 'CommentsController@commentDelete')->name('com
 Route::delete('/commentdestroy/{id}', 'CommentsController@commentDestroy')->name('commentDestroy')->middleware('auth');
 Route::delete('/commentdestroyadmin/{id}', 'CommentsController@commentDestroyAdmin')->name('commentDestroyAdmin')->middleware('auth');
 
-
+//Comments reply
+Route::post('/commentreplypost/{comment_id}', 'CommentsController@commentReplyStore')->name('commentReplyStore');

@@ -47,8 +47,9 @@
                 {{Form::text('comment_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
 
                 {{Form::submit('Add comment', ['class' => 'btn btn-success btn-sm'])}}
+                {{Form::close()}}
             @else
-                Adding comments just for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> dto add comment.
+                Adding comments just for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to add comment.
             @endif
 
         </div>
@@ -65,18 +66,38 @@
                     </div>
                     @foreach($post->comments as $comment)
                         <div class="comment">
-                            <p>{{$comment->comment_body}}</p>
-
-                            <button data-toggle="collapse" data-target="add-reply">Reply to this comment</button>
-                            <div id="add-reply" class="collapse">
-                                Lorem ipsum dolor text....
+                            <div class="comment-user">
+                                user id: {{$comment->user_id}}
                             </div>
+                            <div class="comment-body">
+                                comment: {{$comment->comment_body}}
+                            </div>
+                            <div class="comment-created-at">
+                                create at: {{$comment->created_at}}
+                            </div>
+
+
+                            <div class="comment-reply">
+                                <button data-toggle="collapse" data-target="#add-reply">Reply to this comment</button>
+                                <div id="add-reply" class="collapse">
+                                    @if(Auth::check() || Auth::guard('admin')->check())
+                                    {{Form::open(['route' => ['commentReplyStore', $comment->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
+
+                                    {{Form::label('comment_reply_body', 'Comment:')}}
+                                    {{Form::text('comment_reply_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
+
+                                    {{Form::submit('Add reply', ['class' => 'btn btn-success btn-sm'])}}
+                                    {{Form::close()}}
+                                </div>
+                            </div>
+                            @else
+                                Adding comments just for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to reply to this comment.
+                            @endif
                             @endforeach
 
                         </div>
                 </div>
             </div>
-
 
 
 

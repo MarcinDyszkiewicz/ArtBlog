@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\CommentReply;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CommentsController extends Controller
@@ -35,6 +37,12 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware(['auth' || 'auth:admin']);
+    }
+
     public function commentStore(Request $request, $post_id)
     {
         $this->validate($request, array(
@@ -56,12 +64,6 @@ class CommentsController extends Controller
         return redirect()->route('postSingle', $post->slug);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function commentShow($id)
     {
         //
@@ -80,13 +82,6 @@ class CommentsController extends Controller
         return view('comments.commentEdit', ['comment'=>$comment]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function commentUpdate(Request $request, $id)
     {
         //
@@ -110,5 +105,29 @@ class CommentsController extends Controller
         Session::flash('success', 'Comment was deleted');
 
         return redirect()->route('postShow', $post_id);
+    }
+
+    public function commentReplyStore(Request $request, $comment_id)
+    {
+//        $this->middleware(['user','admin']);
+
+        $this->validate($request, array(
+            'comment_reply_body' => 'required|max:200'
+        ));
+
+//        $post = Post::find($post_id);
+        $comment = Comment::find($comment_id);
+
+        $commentReply = new CommentReply;
+        $commentReply->comment_reply_body = $request->comment_reply_body;
+        $commentReply->user_id=1;
+        $commentReply->comment()->associate($comment);
+
+        $commentReply->save();
+
+
+        Session::flash('success','Comment was added!');
+
+        return redirect()->back();
     }
 }
