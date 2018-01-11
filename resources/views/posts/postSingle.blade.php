@@ -37,6 +37,23 @@
         </div>
     </div>
 
+
+    <div class="row">
+        <div id="comment-form" class="col-md-8 col-md-offset-2">
+            @if(Auth::check() || Auth::guard('admin')->check())
+                {{Form::open(['route' => ['commentStore', $post->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
+
+                {{Form::label('comment_body', 'Comment:')}}
+                {{Form::text('comment_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
+
+                {{Form::submit('Add comment', ['class' => 'btn btn-success btn-sm'])}}
+            @else
+                Adding comments just for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> dto add comment.
+            @endif
+
+        </div>
+    </div>
+
             <div class="row">
                 <div id="comment-form" class="col-md-8 col-md-offset-2">
                     <div class="comment-count">
@@ -61,21 +78,7 @@
             </div>
 
 
-    <div class="row">
-        <div id="comment-form" class="col-md-8 col-md-offset-2">
-            @if(Auth::check() || Auth::guard('admin')->check())
-                {{Form::open(['route' => ['commentStore', $post->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
 
-                {{Form::label('comment_body', 'Comment:')}}
-                {{Form::text('comment_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
-
-                {{Form::submit('Add comment', ['class' => 'btn btn-success btn-sm'])}}
-            @else
-                Adding comments just for registered users. Login or make new account to add comment.
-            @endif
-
-        </div>
-    </div>
 
 
 @endsection
