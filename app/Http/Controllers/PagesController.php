@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Comment;
+use App\User;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
@@ -28,7 +29,7 @@ class PagesController extends Controller
 
     public function postSingle($slug){
 
-        $post = Post::where('slug', '=', $slug)->first();
+        $post = Post::where('slug', '=', $slug)->with('user')->first();
 
 
         return view('posts.postSingle', ['post' => $post]);
@@ -75,5 +76,12 @@ class PagesController extends Controller
     public function adminDashboard(){
 
         return view('admin.adminDashboard');
+    }
+
+    public function userShow($id){
+
+        $user = User::find($id);
+
+        return view('users.userShow', ['user' => $user]);
     }
 }

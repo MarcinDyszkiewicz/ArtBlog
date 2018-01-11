@@ -13,8 +13,8 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>Image</th>
-                <th>Category</th>
                 <th>Tags</th>
+                <th>User</th>
                 <th>Created At</th>
 
                 </thead>
@@ -25,8 +25,8 @@
                     <td>{{$post->category->name}}</td>
                     <td>{!!$post->description!!}</td>
                     <td><img src="{{asset('/images/' . $post->img)}}" height="400" width="800" alt="{{$post->artist_name . " _ " . $post->title}}"/></td>
-                    <td>{{$post->category->name}}</td>
                     @foreach($post->tags as $tag)<td> <span class="label label-default">{{$tag->name}}</span></td>@endforeach
+                    <td><a href="{{route('userShow', $post->user->id)}}"> {{($post->user->name)}}</a></td>
                     <td>{{$post->created_at}}</td>
 
 

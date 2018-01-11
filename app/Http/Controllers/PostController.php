@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class PostController extends Controller
         //Middleware
         public function __construct()
         {
-            $this->middleware('auth');
+            $this->middleware(['auth' || 'admin']);
         }
 
 
@@ -29,16 +30,16 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
+        $user = User::all();
 
-        return view('posts.postCreate', ['categories'=>$categories, 'tags'=>$tags]);
+        return view('posts.postCreate', ['categories'=>$categories, 'tags'=>$tags, 'user'=>$user]);
     }
 
 
     public function postStore(Request $request)
     {
+        ;
 
-
-//        die(var_dump($request->tags));
         $this->validate($request, array(
             'artist_name' => 'required|max:80',
             'title' => 'required|min:2|max:100',
@@ -48,17 +49,17 @@ class PostController extends Controller
 
         ));
 
-
-
-//        dd($request);
+//        $user = User::find($id);
+//        dd($user);
         $post = new Post;
 
         $post->artist_name = $request->artist_name;
         $post->title = $request->title;
         $post->category_id = $request->category_id;
         $post->description = Purifier::clean($request->description);
-        $post->id_user=0;
-        $post->slug = $post->artist_name . '_' . $post->title . '_'. time();
+//        $post->user()->associate($user);
+        $post->id_user = auth()->id();
+        $post->slug = str_slug($post->artist_name . '_' . $post->title . '_'. time(), '-');
 
         if($request->hasFile('img')) {
             $img = $request->file('img');

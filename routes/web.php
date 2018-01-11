@@ -52,6 +52,8 @@ Route::get('/postlist', 'PagesController@postList')->name('postList');
 
 Route::get('/contact', 'PagesController@contactPage')->name('contactPage');
 
+Route::get('/user/{id}', 'PagesController@userShow')->name('userShow');
+
 //contact form
 Route::post('/contact', 'PagesController@contactPost')->name('contactPost');
 

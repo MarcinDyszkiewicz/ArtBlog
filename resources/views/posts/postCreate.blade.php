@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>Create New Post</h1>
-
+{{--{{dd($user)d}}--}}
     {!! Form::open(array('route' => 'postStore', 'data-parsley-validate' => '', 'files' => true)) !!}
 
         {{Form::label('artist_name', 'Artist Name:')}}
