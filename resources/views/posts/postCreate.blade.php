@@ -21,7 +21,7 @@
         {{Form::text('title', null, array('class' => 'form-control input-lg', 'required' => '', 'minlength' =>"2", 'maxlength' =>"100"))}}
 
         {{Form::label('img', 'Upload Image:')}}
-        {{Form::file('img')}}
+        {{Form::file('img',array('required' => '',))}}
 
         {{Form::label('category_id', 'Category:')}}
         <select class="form-control" name="category_id">
@@ -31,7 +31,7 @@
         </select>
 
         {{Form::label('tags', 'Tags:')}}
-        <select class="js-example-basic-multiple form-control" name="tags" multiple="multiple">
+        <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple" required="">
             @foreach($tags as $tag)
                 <option value="{{$tag->id}}">{{$tag->name}}</option>
             @endforeach
@@ -63,15 +63,22 @@
 
     <script src="/js/select2.min.js"></script>
 <script>
-    var testererere;
-    $(document).ready(function() {
-        testererere = $('.js-example-basic-multiple').select2({
-            tags:true,
-            maximumSelectionLength: 20
-        });
 
-    });
-
+            $(document).ready(function() {
+            $('.js-example-basic-multiple').select2({
+                placeholder: "Select or add tags",
+                tags: true,
+                tokenSeparators: [',', ' '],
+//                minimumInputLength: 2,
+                maximumSelectionLength: 20,
+                createTag: function(newTag) {
+                    return {
+                        id: newTag.term,
+                        text: newTag.term
+                    };
+                }
+            })
+            });
 
 </script>
     @endsection

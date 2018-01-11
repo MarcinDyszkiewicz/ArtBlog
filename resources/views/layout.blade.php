@@ -49,8 +49,9 @@
 <script src="/js/bootstrap.min.js"></script>
 
 @yield('footer')
-<footer>
-    <p>Marcin Dyszkiewicz Web Developer, Copyright &copy; 2017-2018 </p>
+<footer style="text-align: center">
+
+    <p>Marcin Dyszkiewicz Web Developer, Copyright &copy; 2017-2018</p>
 </footer>
 </body>
 </html>

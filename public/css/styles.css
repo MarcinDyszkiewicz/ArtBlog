@@ -25,13 +25,25 @@
 .navbar-nav>li>.dropdown-menu{
     background-color: #1b6d85;
 }
-
 .navbar-brand,
 .navbar-nav li a {
     line-height: 150px;
     height: 150px;
     padding-top: 0;
 }
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+    color: #120000;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #FFFFFF;
+}
+/*.navbar-default .navbar-header .navbar-brand > a:hover, .navbar-default .navbar-header .navbar-brand > a:focus{*/
+    /*color: #0f0f0f;*/
+/*}*/
+.navbar-default .navbar-brand:hover{
+    color: #0f0f0f;
+}
+
 #showcase {
     min-height: 400px;
     background: url('../images/LeonardoDaVinci _ LastSupperOfJesus.jpg') no-repeat;
@@ -57,3 +69,4 @@
     text-align: center;
     border: double 10px;
 }
+

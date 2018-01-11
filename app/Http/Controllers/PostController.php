@@ -6,6 +6,8 @@ use App\Category;
 use App\Tag;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Purifier;
 use Image;
@@ -38,14 +40,17 @@ class PostController extends Controller
 
 //        die(var_dump($request->tags));
         $this->validate($request, array(
-           'artist_name' => 'required|max:80',
+            'artist_name' => 'required|max:80',
             'title' => 'required|min:2|max:100',
             'category_id' => 'required|integer',
             'description' => 'required|min:5|max:200',
-            'img'   => 'required|image'
+            'img'   => 'required|image',
 
         ));
 
+
+
+//        dd($request);
         $post = new Post;
 
         $post->artist_name = $request->artist_name;
@@ -64,9 +69,42 @@ class PostController extends Controller
             $post->img = $filename;
         }
 
+
+
+        if ( ! $request->has('tags'))
+        {
+            $post->tags()->detach();
+        }
+
+        $newTagIds = array();
+        $oldTagIds =  array();
+
+
+        foreach ($request->tags as $sentTagName)
+        {
+
+            if (! Tag::where('id', '=', $sentTagName)->exists())
+            {
+                $newTag = new Tag;
+                $newTag->name=$sentTagName;
+                $newTag->save();
+                $newTagIds[] = $newTag->id;
+            }
+            else{
+                $oldTagIds[] = $sentTagName;
+
+            }
+//            dd($oldTagIds);
+
+        }
+        $allTagIds = array_merge($oldTagIds,$newTagIds);
+//        dd($allTagIds);
+
+
         $post->save();
 
-        $post->tags()->sync($request->tags, false);
+
+        $post->tags()->sync($allTagIds, false);
 
         Session::flash('success','The post was added!');
 

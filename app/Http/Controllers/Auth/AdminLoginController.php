@@ -14,7 +14,7 @@ class AdminLoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:admin')->except( 'adminLogout');
+        $this->middleware(['guest','guest:admin'])->except( 'adminLogout');
     }
 
     public function showLoginForm()

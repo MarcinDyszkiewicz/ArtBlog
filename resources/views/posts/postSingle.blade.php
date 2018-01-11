@@ -39,10 +39,23 @@
 
             <div class="row">
                 <div id="comment-form" class="col-md-8 col-md-offset-2">
+                    <div class="comment-count">
+                        @if(count($post->comments) > 0)
+                        Comments ({{count($post->comments)}})
+                        @else
+                            This Post has no comments yet. Be the first one and add comment.
+                        @endif
+                    </div>
                     @foreach($post->comments as $comment)
                         <div class="comment">
                             <p>{{$comment->comment_body}}</p>
+
+                            <button data-toggle="collapse" data-target="add-reply">Reply to this comment</button>
+                            <div id="add-reply" class="collapse">
+                                Lorem ipsum dolor text....
+                            </div>
                             @endforeach
+
                         </div>
                 </div>
             </div>
@@ -50,12 +63,17 @@
 
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2">
-            {{Form::open(['route' => ['commentStore', $post->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
+            @if(Auth::check() || Auth::guard('admin')->check())
+                {{Form::open(['route' => ['commentStore', $post->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
 
-            {{Form::label('comment_body', 'Comment:')}}
-            {{Form::text('comment_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
+                {{Form::label('comment_body', 'Comment:')}}
+                {{Form::text('comment_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
 
-            {{Form::submit('Add comment', ['class' => 'btn btn-success btn-sm'])}}
+                {{Form::submit('Add comment', ['class' => 'btn btn-success btn-sm'])}}
+            @else
+                Adding comments just for registered users. Login or make new account to add comment.
+            @endif
+
         </div>
     </div>
 
