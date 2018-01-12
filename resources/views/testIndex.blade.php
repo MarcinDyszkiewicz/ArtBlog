@@ -67,35 +67,35 @@
 
     </header>
 
-    {{--Testimonials--}}
-    <section class="testimonial">
+    {{--Slider--}}
+    <section class="slider">
 
-        <div class="testimonial-overlay">
+        <div class="slider-overlay">
 
-            <div class="container">
+            {{--<div class="container">--}}
 
                 <div class="row">
 
                     <div class="col-md-12">
 
-                        <div id="carousel-testimonial" class="carousel slide" data-ride="carousel">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
 
                             {{--indicators--}}
                             <ol class="carousel-indicators">
-                                <li data-target="#carousel-testimonial" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-testimonial" data-slide-to="1"></li>
-                                <li data-target="#carousel-testimonial" data-slide-to="2"></li>
+                                <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-slider" data-slide-to="1"></li>
+                                <li data-target="#carousel-slider" data-slide-to="2"></li>
                             </ol>
 
                             {{--wrapper for slides--}}
-                            <div class="carousel-inner">
+                            <div class="carousel-inner" role="listbox">
 
                                 {{--item 1--}}
-                                <div class="item active text center">
+                                <div class="item active text-center">
 
                                     <img src="images/Rembrandt i ja_oraz ty i ona_sONWex.jpg" alt="" class="center-block">
 
-                                    <div class="testimonial-caption">
+                                    <div class="slide-caption">
 
                                         <h2>Name of somebody1</h2>
                                         <h4><span>his job 1</span> in company 1</h4>
@@ -107,11 +107,11 @@
                                 </div>
 
                                 {{--item 2--}}
-                                <div class="item active text center">
+                                <div class="item text-center">
 
                                     <img src="images/2323232323_2323232323_yRwCtU.jpg" alt="" class="center-block">
 
-                                    <div class="testimonial-caption">
+                                    <div class="slide-caption">
 
                                         <h2>Name of somebody2</h2>
                                         <h4><span>his job 2</span> in company 2</h4>
@@ -123,11 +123,11 @@
                                 </div>
 
                                 {{--item 3--}}
-                                <div class="item active text center">
+                                <div class="item text-center">
 
-                                    <img src="images/2323232323_2323232323_yRwCtU.jpg" alt="" class="center-block">
+                                    <img src="images/Rembrandt_1234567890_OubETm.png" alt="" class="center-block">
 
-                                    <div class="testimonial-caption">
+                                    <div class="slide-caption">
 
                                         <h2>Name of somebody3</h2>
                                         <h4><span>his job 3</span> in company 3</h4>
@@ -137,6 +137,17 @@
                                     </div>
 
                                 </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-slider" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-slider" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
 
 
                             </div>

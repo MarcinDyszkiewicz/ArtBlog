@@ -95,6 +95,59 @@ p{
     color: #FFFFFF;
 }
 
+/* Testimonials (Carousel) */
+.slider {
+    background-image: url("../img/art_gallery.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+.slider-overlay{
+    background-color: rgba(31,31,31,0.9);
+    padding-top: 1px;
+    padding-bottom: 20px;
+}
+.carousel-indicators{
+    bottom: -10px;
+}
+.carousel-inner .item img{
+    margin-top: 80px;
+    border: 2px solid #129CF3;
+    border-radius: 2%;
+    padding: 1px;
+}
+.slide-caption{
+    padding-bottom: 80px;
+}
+.slide-caption h2{
+    color: #129CF3;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 30px;
+    margin-top: 25px;
+}
+.slide-caption h4{
+    color: #129CF3;
+}
+.slide-caption h4 span{
+    color: #9d9d9d;
+    font-style: italic;
+    font-weight: 300;
+}
+.slide-caption p{
+    color: #9d9d9d;
+    font-size: 18px;
+    padding-top: 50px;
+}
+
+
+
+
+
 
 
 .navbar{
