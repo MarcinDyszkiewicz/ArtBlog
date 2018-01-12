@@ -53,7 +53,7 @@ class CommentsController extends Controller
 
         $comment = new Comment;
         $comment->comment_body = $request->comment_body;
-        $comment->user_id=1;
+        $comment->user_id = auth()->id();
         $comment->post()->associate($post);
 
         $comment->save();
@@ -120,7 +120,7 @@ class CommentsController extends Controller
 
         $commentReply = new CommentReply;
         $commentReply->comment_reply_body = $request->comment_reply_body;
-        $commentReply->user_id=1;
+        $commentReply->user_id = auth()->id();
         $commentReply->comment()->associate($comment);
 
         $commentReply->save();

@@ -49,15 +49,13 @@ class PostController extends Controller
 
         ));
 
-//        $user = User::find($id);
-//        dd($user);
+
         $post = new Post;
 
         $post->artist_name = $request->artist_name;
         $post->title = $request->title;
         $post->category_id = $request->category_id;
         $post->description = Purifier::clean($request->description);
-//        $post->user()->associate($user);
         $post->id_user = auth()->id();
         $post->slug = str_slug($post->artist_name . '_' . $post->title . '_'. time(), '-');
 

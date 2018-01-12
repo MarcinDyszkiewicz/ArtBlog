@@ -53,6 +53,7 @@ Route::get('/postlist', 'PagesController@postList')->name('postList');
 Route::get('/contact', 'PagesController@contactPage')->name('contactPage');
 
 Route::get('/user/{id}', 'PagesController@userShow')->name('userShow');
+Route::get('/testindex', 'PagesController@testIndex');
 
 //contact form
 Route::post('/contact', 'PagesController@contactPost')->name('contactPost');

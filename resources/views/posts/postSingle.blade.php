@@ -67,7 +67,7 @@
                     @foreach($post->comments as $comment)
                         <div class="comment">
                             <div class="comment-user">
-                                user id: {{$comment->user_id}}
+                                user: <a href="{{route('userShow', $comment->user->id)}}"> {{$comment->user->name}}</a>
                             </div>
                             <div class="comment-body">
                                 comment: {{$comment->comment_body}}

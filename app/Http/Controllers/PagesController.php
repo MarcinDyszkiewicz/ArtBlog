@@ -84,4 +84,12 @@ class PagesController extends Controller
 
         return view('users.userShow', ['user' => $user]);
     }
+
+    public function testIndex()
+    {
+        $posts = Post::all();
+        $admin = Admin::all();
+
+        return view('testIndex', ['posts' => $posts, 'admin' => $admin]);
+    }
 }

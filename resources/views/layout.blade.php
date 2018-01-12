@@ -8,8 +8,12 @@
 
     <title>Art Blog @yield('title')</title>
 
-    <!-- Bootstrap -->
+    {{--Fonts--}}
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500i,600,700,700i,800,900|Source+Sans+Pro:300,300i,400,400i,600i,700,900" rel="stylesheet">
+
+    <!-- Bootstrap & CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/parsley.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
 
@@ -21,7 +25,7 @@
 @include('partials._navBar')
     <section id="showcase" class="col-md-8 col-md-offset-2" >
         <div class="container">
-            <h1>Art Blog</h1>
+            {{--<h1>Art Blog</h1>--}}
         </div>
     </section>
 
