@@ -19,6 +19,7 @@ p{
 
 /* header */
 .header{
+    height: 100%;
     background-image: url("../img/LeonardoDaVinci_LastSupperOfJesus.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -27,6 +28,10 @@ p{
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
+}
+.header .container{
+    padding-top: 150px;
+    padding-bottom: 150px;
 }
 .header-overlay{
     background-color: rgba(31,31,31,0.5);
@@ -106,6 +111,14 @@ p{
     -o-background-size: cover;
     -webkit-background-size: cover;
 }
+.carousel-header h1{
+    color: #FFFFFF;
+    font-size: 35px;
+    font-weight: 600;
+    /*line-height: 35px;*/
+    /*padding-top: 20px;*/
+    text-transform: uppercase;
+}
 .slider-overlay{
     background-color: rgba(31,31,31,0.9);
     padding-top: 1px;
@@ -115,9 +128,9 @@ p{
     bottom: -10px;
 }
 .carousel-inner .item img{
-    margin-top: 80px;
-    border: 2px solid #129CF3;
-    border-radius: 2%;
+    margin-top: 40px;
+    /*border: 2px solid #129CF3;*/
+    border-radius: 1%;
     padding: 1px;
 }
 .slide-caption{

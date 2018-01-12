@@ -79,7 +79,11 @@
                     <div class="col-md-12">
 
                         <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-header text-center">
 
+                                <h1>Artists</h1>
+
+                            </div>
                             {{--indicators--}}
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
@@ -89,6 +93,7 @@
 
                             {{--wrapper for slides--}}
                             <div class="carousel-inner" role="listbox">
+
 
                                 {{--item 1--}}
                                 <div class="item active text-center">
@@ -156,7 +161,7 @@
 
                     </div>
 
-                </div>
+                {{--</div>--}}
 
             </div>
 
@@ -164,6 +169,31 @@
 
     </section>
 
+    {{--categories--}}
+    <section>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-10 col-md-offset-1">
+
+                    <div class="section-title">
+
+                        <h2> Categories</h2>
+                        <p>Początek traktatu czasu być uważana.
+                            Dopiero możemy nazwać wszechdostatecznością.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
     <div class="row">
