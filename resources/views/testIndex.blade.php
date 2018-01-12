@@ -280,3 +280,14 @@
 
 
 @endsection
+
+
+
+@section('footer')
+
+    @endsection
+
+@section('scripts')
+
+    <script src="/js/index.js"></script>
+@endsection

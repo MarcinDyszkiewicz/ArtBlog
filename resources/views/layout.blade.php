@@ -30,13 +30,13 @@
     </section>
 
 
-@if(Auth::check())
-    Logged as User
-@elseif(Auth::guard('admin')->check())
-    Logged as Admin
-@else
-    Logged Out
-@endif
+{{--@if(Auth::check())--}}
+    {{--Logged as User--}}
+{{--@elseif(Auth::guard('admin')->check())--}}
+    {{--Logged as Admin--}}
+{{--@else--}}
+    {{--Logged Out--}}
+{{--@endif--}}
 {{--{{ Auth::check() ? "Logged as User" : "Logged Out"}}--}}
 
 {{--<p>{{ Auth::guard('admin') ? "Logged as Admin" : ""}}</p>--}}
@@ -53,9 +53,23 @@
 <script src="/js/bootstrap.min.js"></script>
 
 @yield('footer')
-<footer style="text-align: center">
+<footer class="footer">
 
-    <p>Marcin Dyszkiewicz Web Developer, Copyright &copy; 2017-2018</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="copyright">
+                    <p><a href="#">Marcin Dyszkiewicz Web Developer</a>, Copyright &copy; 2017-2018</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="scroll-top">
+                    <a href="#"><i class="fa fa-angle-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </footer>
 </body>
 </html>
