@@ -176,14 +176,67 @@
 
             <div class="row">
 
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-10">
 
-                    <div class="section-title">
+                    <div class="section-title text-center">
 
                         <h2> Categories</h2>
                         <p>Początek traktatu czasu być uważana.
                             Dopiero możemy nazwać wszechdostatecznością.
                         </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="choose-us-wrapper">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        {{--Caregoties menu--}}
+                        <div class="categories-list-menu">
+
+                            <table>
+                                <th>aaa</th>
+                                <ul>aaa</ul>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        {{--Categories list head--}}
+                        <div class="categories-list-head">
+
+                            <h2> all post from category nr 1</h2>
+
+                        </div>
+
+                        <div class="categories-list-body">
+
+                            {{--category list of post--}}
+                            <div class="categories-list-posts">
+
+                                <div><i class="fa fa-bolt"></i></div>
+                                <h3>Kiedy Dobru przypisujemy wieczność, to jest zupełne poznanie niebędzie</h3>
+
+                                <div class="categories-list-posts-btn">
+                                    <a class="btn btn-show-more-category" href="#"> Show All Posts </a>
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 

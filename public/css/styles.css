@@ -157,6 +157,31 @@ p{
     padding-top: 50px;
 }
 
+/* categories */
+.btn-show-more-category,
+.btn-show-more-category:focus,
+.btn-show-more-category:active,
+.btn-show-more-category:visited {
+    background-color: #129CF3;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    border: 1px solid;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -webkit-transition: all 1s;
+}
+.btn-show-more-category:hover {
+    background-color: #129CF3;
+    border-color: #129CF3;
+    color: #FFFFFF;
+}
+
 
 
 
