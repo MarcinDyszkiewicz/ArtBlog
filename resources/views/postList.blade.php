@@ -4,11 +4,12 @@
 
 @section('content')
 
+<section class="all-posts">
 
-<div class="post-list">
-    <div class="container">
+    <div class="container no-background" style="width: 60%">
         <div class="row">
-
+            <div class="post-list text-center">
+                <h1>Post List</h1>
             <div class="col-md-8 col-md-offset-2">
 
                @foreach($posts as $post)
@@ -29,12 +30,15 @@
 
                 <p class="post-caption">
 
-                        <h4><span>Artist Name:</span></h4><h2>{{$post->artist_name}}</h2>
-                        <h4><span>Title:</span></h4><h3>:<a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></h3>
+                        <p><span>Artist Name: </span>{{$post->artist_name}}</p>
 
-                        <p>{{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}
-                        </p>
-                    <p>@foreach($post->tags as $tag) <a class="label label-default" href="{{route('tagShow', $tag->id)}}" style="margin: 2px"> {{$tag->name}} </a>@endforeach</p>
+                        <p><span>Title:</span> <a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></p>
+
+                        <p><span>Description:</span> {{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}</p>
+
+                        <p><span>Category:</span> <a href="{{route('categoryShow', $post->category->id)}}">{{$post->category->name}}</a></p>
+
+                        <p>@foreach($post->tags as $tag) <a class="label label-default" href="{{route('tagShow', $tag->id)}}" style="margin: 2px"> {{$tag->name}} </a>@endforeach</p>
                 </div>
 
 
@@ -56,10 +60,10 @@
 
 
 
-                </div>
+               </div>
+            </div>
         </div>
     </div>
-</div>
-
+</section>
 
 @endsection

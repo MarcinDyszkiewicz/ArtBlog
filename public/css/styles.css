@@ -145,7 +145,7 @@ p{
     color: #FFFFFF;
 }
 
-/* Testimonials (Carousel) */
+/* Slider (Carousel) */
 .slider {
     background-image: url("../img/art_gallery.jpg");
     background-attachment: fixed;
@@ -177,6 +177,7 @@ p{
     /*border: 2px solid #129CF3;*/
     border-radius: 1%;
     padding: 1px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .slide-caption{
     padding-bottom: 80px;
@@ -235,7 +236,9 @@ p{
     -o-transition: width 0.35s ease;
     transition: width 0.35s ease;
 }
-
+.categories-list-head-image img{
+    padding: 5px;
+}
 
 
 /* Footer */
@@ -268,12 +271,35 @@ p{
 }
 
 /* Post List*/
-
-.post-single{
-    border-bottom: 20px solid black;
+.all-posts {
+    background-image: url("../img/art_gallery.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    border-top: 5px solid black;
 }
-.post-header .image{
-
+.no-background{
+    background-color: white;
+}
+.post-list{
+    margin-top: 40px;
+}
+.post-list h1{
+    font-size: 60px;
+}
+.post-image{
+    padding: 15px;
+}
+.post-image img{
+    border-radius: 1%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.post-box{
+    padding: 20px;
 }
 .italic{
     font-style: italic;
