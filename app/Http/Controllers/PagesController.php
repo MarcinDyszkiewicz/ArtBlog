@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Category;
 use App\Comment;
 use App\User;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class PagesController extends Controller
 
     public function postList()
     {
-        $posts = Post::all();
+        $posts = Post::with('user')->get();
 
         return view('postList', ['posts' => $posts]);
     }
@@ -89,7 +90,8 @@ class PagesController extends Controller
     {
         $posts = Post::all();
         $admin = Admin::all();
+        $categories = Category::with('posts')->get();
 
-        return view('testIndex', ['posts' => $posts, 'admin' => $admin]);
+        return view('testIndex', ['posts' => $posts, 'admin' => $admin, 'categories' => $categories]);
     }
 }

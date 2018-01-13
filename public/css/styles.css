@@ -228,7 +228,13 @@ p{
     border-color: #129CF3;
     color: #FFFFFF;
 }
-
+.collapse.width {
+    height: auto;
+    -webkit-transition: width 0.35s ease;
+    -moz-transition: width 0.35s ease;
+    -o-transition: width 0.35s ease;
+    transition: width 0.35s ease;
+}
 
 
 
@@ -261,8 +267,22 @@ p{
     font-size: 25px;
 }
 
+/* Post List*/
 
+.post-single{
+    border-bottom: 20px solid black;
+}
+.post-header .image{
 
+}
+.italic{
+    font-style: italic;
+}
+.post-header h2 a{
+    font-size: 40px;
+    text-decoration: none;
+    color: #0f0f0f;
+}
 
 
 

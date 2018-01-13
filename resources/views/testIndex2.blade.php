@@ -124,14 +124,13 @@
                         {{--Caregoties menu--}}
                         <div class="categories-list-menu">
 
-                            <div class="list-group" id="accordion">
+                            <div class="list-group">
 
                                 <button type="button" class="list-group-item list-group-item-action active">
                                     Cras justo odio
                                 </button>
                                 @foreach($categories as $category)
-
-                                    <button type="button" class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapse{{$category->id}}" data-parent="#accordion" href="#collapse{{$category->id}}" aria-expanded="true">{{$category->name}}</button>
+                                <button type="button" class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapseExample{{$category->id}}" aria-expanded="false" aria-controls="collapseExample">{{$category->name}}</button>
                                 @endforeach
 
                             </div>
@@ -144,40 +143,33 @@
                         {{--Categories list head--}}
                         <div class="categories-list-head">
                             @foreach($categories as $category)
-                                <div class="collapse" id="collapse{{$category->id}}">
-                                    <div class="well">
-                                        @foreach($category->posts->take(5) as $post)
-                                            <ul>
-                                                <li><img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block"></li>
-                                                <li>{{$post->artist_name}}</li>
-                                                <li>{{$post->title}}</li>
-                                                <li>{{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}</li>
-                                            </ul>
+                            <div class="collapse" id="collapseExample{{$category->id}}">
+                                <div class="well">
+                                    @foreach($category->posts as $post)
+                                    {{$post->title}}
+                                    @endforeach
 
-                                        @endforeach
+                        <div class="categories-list-body">
 
-                                        <div class="categories-list-body">
+                            {{--category list of post--}}
+                            <div class="categories-list-posts">
 
-                                            {{--category list of post--}}
-                                            <div class="categories-list-posts">
+                                <div><i class="fa fa-bolt"></i></div>
+                                <h3>Kiedy Dobru przypisujemy wieczność, to jest zupełne poznanie niebędzie</h3>
 
+                                <div class="categories-list-posts-btn">
+                                    <a class="btn btn-show-more-category" href="#"> Show All Posts </a>
+                                </div>
 
-                                                <div class="categories-list-posts-btn">
-                                                    <a class="btn btn-show-more-category" href="{{route('categoryShow', $category->id)}}"> Show All </a>
-                                                </div>
+                            </div>
 
-                                            </div>
-
-                                        </div>
-
-                                    </div>
+                        </div>
 
                                 </div>
-                        </div>
-                        @endforeach
 
+                            </div>
                     </div>
-
+                            @endforeach
                 </div>
 
             </div>
