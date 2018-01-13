@@ -23,23 +23,62 @@
 </head>
 <body>
 @include('partials._navBar')
-    <section id="showcase" class="col-md-8 col-md-offset-2" >
+
+{{--@yield('header')--}}
+{{-------header----------}}
+<header class="header">
+
+    <div class="header-overlay">
+
         <div class="container">
-            {{--<h1>Art Blog</h1>--}}
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    logo
+                    <div class="logo text-center">
+
+                        <img src="img/logo1.png" alt="logo">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-8">
+
+                    <div class="header-text">
+
+                        title & destripction
+                        <h1>Blog for everybody who loves art</h1>
+                        <p> Built with great love! </p>
+
+                    </div>
+                    @yield('header-button')
+                    {{--<div class="header-btns">--}}
+
+                        {{--header buttons--}}
+                        {{--<a class="btn btn-make-account" href="#"> Make a New Account </a>--}}
+                        {{--<a class="btn btn-tour" href="#"> Take a Tour and See Our Posts--}}
+                            {{--<i class="fa fa-angle-down"></i>--}}
+                        {{--</a>--}}
+
+                    {{--</div>--}}
+
+                </div>
+
+            </div>
+
         </div>
-    </section>
+
+    </div>
 
 
-{{--@if(Auth::check())--}}
-    {{--Logged as User--}}
-{{--@elseif(Auth::guard('admin')->check())--}}
-    {{--Logged as Admin--}}
-{{--@else--}}
-    {{--Logged Out--}}
-{{--@endif--}}
-{{--{{ Auth::check() ? "Logged as User" : "Logged Out"}}--}}
+</header>
 
-{{--<p>{{ Auth::guard('admin') ? "Logged as Admin" : ""}}</p>--}}
 
 @yield('content')
 

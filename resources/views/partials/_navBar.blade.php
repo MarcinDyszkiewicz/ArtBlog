@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 <nav class="navbar navbar-default navbar-fixed-top" style="margin-top: 0px; opacity: 1; background-color: rgba(59, 59, 59, 0.7); border-color: rgb(68, 68, 68);">
 
     <div class="container-fluid">
