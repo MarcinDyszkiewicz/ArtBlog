@@ -17,8 +17,9 @@ class PagesController extends Controller
     {
         $posts = Post::all();
         $admin = Admin::all();
+        $categories = Category::with('posts')->get();
 
-        return view('index', ['posts' => $posts, 'admin' => $admin]);
+        return view('testIndex', ['posts' => $posts, 'admin' => $admin, 'categories' => $categories]);
     }
 
     public function navBar()

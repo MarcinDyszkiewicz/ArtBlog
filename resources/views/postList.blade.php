@@ -4,11 +4,11 @@
 
 @section('content')
 
-<section class="all-posts">
+<section class="page-body">
 
     <div class="container no-background" style="width: 60%">
         <div class="row">
-            <div class="post-list text-center">
+            <div class="page-title text-center">
                 <h1>Post List</h1>
             <div class="col-md-8 col-md-offset-2">
 

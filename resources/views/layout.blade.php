@@ -80,10 +80,15 @@
 </header>
 
 
+
 @yield('content')
 
 
 @include('partials._messages')
+
+
+
+
 
 @yield('scripts')
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
