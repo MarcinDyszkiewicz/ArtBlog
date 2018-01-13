@@ -4,42 +4,49 @@
 
 @section('content')
 
+    @component('partials._container')
+        @slot('slot1')
+            Post: {{$post->artist_name}} {{$post->title}}
+        @endslot
+
+        @slot('slot2')
+
+                                <div class="single-post-box text-center">
+                                    <div class="post-header ">
+
+
+                                    <div class="post-image">
+
+                                        <img src="{{asset('/images/' . $post->img)}}" height="300" width="600" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block">
+
+                                    </div>
+
+
+                                    <div class="post-caption">
+
+                                        <p><span class="italic">by </span><a href="{{route('userShow', $post->user->id)}}">{{$post->user->name}}</a><span class="italic"> on </span>{{date('F d, Y', strtotime($post->created_at))}}</p>
+                                    </div>
+                                        <h3><span>Artist Name: </span>{{$post->artist_name}}</h3>
+
+                                        <h3><span>Title:</span> {{$post->title}}</h3>
+
+                                        <h4><span>Description:</span> {{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}</h4>
+
+                                        <p><span>Category:</span> <a href="{{route('categoryShow', $post->category->id)}}">{{$post->category->name}}</a></p>
+
+                                        <p>@foreach($post->tags as $tag) <a class="label label-default" href="{{route('tagShow', $tag->id)}}" style="margin: 2px"> {{$tag->name}} </a>@endforeach</p>
+                                    </div>
+
+
+
+
+
+
+<hr>
+<div class="comment-box text-left">
+
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <table class="table table-hover" width="100%">
-                <thead>
-                <th>Artist Name</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Tags</th>
-                <th>User</th>
-                <th>Created At</th>
-
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{{$post->artist_name}}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->category->name}}</td>
-                    <td>{!!$post->description!!}</td>
-                    <td><img src="{{asset('/images/' . $post->img)}}" height="400" width="800" alt="{{$post->artist_name . " _ " . $post->title}}"/></td>
-                    @foreach($post->tags as $tag)<td> <span class="label label-default">{{$tag->name}}</span></td>@endforeach
-                    <td><a href="{{route('userShow', $post->user->id)}}"> {{($post->user->name)}}</a></td>
-                    <td>{{$post->created_at}}</td>
-
-
-
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div id="comment-form" class="col-md-8 col-md-offset-2">
+        <div id="comment-form" class="col-md-12">
             @if(Auth::check() || Auth::guard('admin')->check())
                 {{Form::open(['route' => ['commentStore', $post->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
 
@@ -56,7 +63,7 @@
     </div>
 
             <div class="row">
-                <div id="comment-form" class="col-md-8 col-md-offset-2">
+                <div id="comment-list" class="col-md-12">
                     <div class="comment-count">
                         @if(count($post->comments) > 0)
                         Comments ({{count($post->comments)}})
@@ -64,7 +71,9 @@
                             This Post has no comments yet. Be the first one and add comment.
                         @endif
                     </div>
+
                     @foreach($post->comments as $comment)
+                        <hr>
                         <div class="comment">
                             <div class="comment-user">
                                 user: <a href="{{route('userShow', $comment->user->id)}}"> {{$comment->user->name}}</a>
@@ -78,7 +87,7 @@
 
 
                             <div class="comment-reply">
-                                <button data-toggle="collapse" data-target="#add-reply">Reply to this comment</button>
+                                <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#add-reply">Reply to this comment</button>
                                 <div id="add-reply" class="collapse">
                                     @if(Auth::check() || Auth::guard('admin')->check())
                                     {{Form::open(['route' => ['commentReplyStore', $comment->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
@@ -96,10 +105,15 @@
                             @endforeach
 
                         </div>
+                        </div>
+                        </div>
                 </div>
             </div>
 
 
 
 
+
+        @endslot
+    @endcomponent
 @endsection

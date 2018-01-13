@@ -5,6 +5,7 @@
             <div class="page-title text-center">
                 <h1>{{$slot1}}</h1>
                 <div class="col-md-8 col-md-offset-2">
+                    <hr>
                     {{$slot2}}
                 </div>
             </div>

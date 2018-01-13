@@ -28,7 +28,7 @@
                 </div>
 
 
-                <p class="post-caption">
+                <div class="post-caption">
 
                         <p><span>Artist Name: </span>{{$post->artist_name}}</p>
 
@@ -59,8 +59,8 @@
 
 
 
-
-               </div>
+            </div>
+            </div>
             </div>
         </div>
     </div>

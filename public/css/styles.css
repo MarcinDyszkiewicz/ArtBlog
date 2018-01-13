@@ -293,7 +293,7 @@ p{
     margin-top: 40px;
 }
 .page-title h1{
-    font-size: 60px;
+    font-size: 50px;
 }
 .post-image{
     padding: 15px;
@@ -315,6 +315,29 @@ p{
 }
 
 
+/* Contact */
+.contact-container{
+    margin-bottom: 2vh;
+}
+
+/* Post Single*/
+.comment-box{
+    margin-top: 6vh;
+    margin-bottom: 5vh;
+    border: groove 5px black;
+}
+#comment-form{
+    padding-bottom: 3vh;
+}
+.comment{
+
+}
+
+
+/* Rest */
+.btn .btn-success{
+    margin-bottom: 10px;
+}
 
 
 

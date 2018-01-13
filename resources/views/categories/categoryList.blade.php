@@ -5,14 +5,12 @@
 @section('content')
 
 @component('partials._container')
-@slot('slot1')
-    ALL Categories
-@endslot
-@slot('slot2')
+    @slot('slot1')
+        All Categories
+    @endslot
 
+    @slot('slot2')
 
-
-                        {{--Caregoties menu--}}
                         <div class="categories-list-menu">
 
                             <div class="list-group" id="accordion">
@@ -67,10 +65,6 @@
                                 </div>
                         </div>
                         @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
 @endslot

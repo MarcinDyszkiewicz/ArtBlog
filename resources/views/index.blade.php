@@ -129,7 +129,7 @@
                                 </button>
                                 @foreach($categories as $category)
 
-                                    <button type="button" class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapse{{$category->id}}" data-parent="#accordion" href="#collapse{{$category->id}}" aria-expanded="true">{{$category->name}}</button>
+                                    <button type="button" class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapse{{$category->id}}" aria-expanded="true">{{$category->name}}</button>
                                 @endforeach
 
                             </div>
@@ -141,7 +141,7 @@
                         {{--Categories list head--}}
                         <div class="categories-list-head">
                             @foreach($categories as $category)
-                                <div class="collapse in" id="collapse{{$category->id}}">
+                                <div class="collapse" id="collapse{{$category->id}}">gggggggggggggggggggggggggggggggggg
                                     <div class="well text-center">
                                         @foreach($category->posts->take(5) as $post)
 
@@ -219,15 +219,15 @@
 
     <script src="/js/index.js"></script>
 
-    <script>
-        $('.list-group-item-action a').click(function() {
-            $('.list-group-item-action').removeClass('active');
+    {{--<script>--}}
+        {{--$('.list-group-item-action a').click(function() {--}}
+            {{--$('.list-group-item-action').removeClass('active');--}}
 
-            //If the panel was open and would be closed by this click, do not active it
-            if(!$(this).closest('.panel').find('.panel-collapse').hasClass('in'))
-                $(this).parents('.panel-heading').addClass('active');
-        });
+            {{--//If the panel was open and would be closed by this click, do not active it--}}
+            {{--if(!$(this).closest('.panel').find('.panel-collapse').hasClass('in'))--}}
+                {{--$(this).parents('.panel-heading').addClass('active');--}}
+        {{--});--}}
 
 
-    </script>
+    {{--</script>--}}
 @endsection

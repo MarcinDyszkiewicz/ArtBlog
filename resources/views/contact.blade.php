@@ -6,10 +6,11 @@
 
 @section('content')
 
-    <section id="main">
-        <div class="container">
-            <div id="main-col">
-                <h2>Contact Me</h2>
+    <section class="page-body">
+        <div class="container no-background" style="width:60%">
+            <div id="main-col" class="contact-container">
+                <div class="page-title">
+                <h1 class="text-center">Contact Me</h1>
                 <hr>
                 <form action="{{ route('contactPost') }}" method="POST" data-parsley-validate="">
                     {{ csrf_field() }}
@@ -30,8 +31,9 @@
                         <textarea id="message" name="message" class="form-control" required="" minlength="10" maxlength="3000"></textarea>
                     </div>
 
-                    <input type="submit" class="submit" value="Send Message">
+                    <input type="submit" class="submit btn btn-primary" value="Send Message">
                 </form>
+                </div>
             </div>
         </div>
     </section>

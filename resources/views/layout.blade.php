@@ -39,7 +39,7 @@
                     logo
                     <div class="logo text-center">
 
-                        <img src="img/logo1.png" alt="logo">
+                        <img src="{{asset('/img/logo1.png')}}" alt="logo">
                     </div>
 
                 </div>

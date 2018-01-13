@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{route('index')}}"><img src="img/logo-small.png" alt="logo"></a>
+            <a class="navbar-brand" href="{{route('index')}}"><img src="{{asset('/img/logo-small.png')}}" alt="logo"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="{{Request::is('/') ? "active" : ""}}"><a href="{{route('index')}}">Home</a></li>
-                <li class="{{Request::is('postlist') ? "active" : ""}}"><a href="{{route('postList')}}">New Posts</a></li>
+                <li class="{{Request::is('postlist') ? "active" : ""}}"><a href="{{route('postList')}}">All Posts</a></li>
                 <li class="{{Request::is('categorylist') ? "active" : ""}}"><a href="{{route('categoryList')}}">Categories</a></li>
                 {{--<li class="{{Request::is('artistlist') ? "active" : ""}}"><a href="{{route('artistList')}}">Home <span class="sr-only">(current)</span></a></li>--}}
                 {{--<li class="{{Request::is('about') ? "active" : ""}}"><a href="{{route('about')}}">About <span class="sr-only">(current)</span></a></li>--}}
