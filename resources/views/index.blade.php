@@ -5,8 +5,11 @@
 @section('header-button')
 
                     <div class="header-btns">
-
-                        <a class="btn btn-make-account" href="#"> Make a New Account </a>
+                        @if(Auth::check() || Auth::guard('admin')->check())
+                        <a class="btn btn-make-account" href="{{route('postCreate')}}"> Create a New Post </a>
+                        @else
+                        <a class="btn btn-make-account" href="{{route('register')}}"> Make a New Account </a>
+                        @endif
                         <a class="btn btn-tour" href="#"> Take a Tour and See Our Posts
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -37,7 +40,7 @@
                             </div>
                             {{--indicators--}}
                             <ol class="carousel-indicators">
-                                @foreach( $posts as $post )
+                                @foreach( $posts->take(10) as $post )
                                     <li data-target="#carousel-slider" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
                                 @endforeach
                             </ol>
@@ -55,9 +58,11 @@
 
                                         <h4><span>Artist Name:</span></h4><h2>{{$post->artist_name}}</h2>
                                         <h4><span>Title:</span></h4><h3>:<a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></h3>
-                                        <h4><a href="{{route('userShow', $post->id_user)}}"> See author</a></h4>
-                                        <p>{{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}
-                                        </p>
+                                        {{--<h4><a href="{{route('userShow', $post->id_user)}}"> See author</a></h4>--}}
+                                        <h4>{{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}
+                                        </h4>
+                                        <p><span class="italic">by </span><a href="{{route('userShow', $post->user->id)}}">{{$post->user->name}}</a><span class="italic"> on </span>{{date('F d, Y', strtotime($post->created_at))}}</p>
+
                                     </div>
 
                                 </div>
@@ -89,6 +94,8 @@
 
     {{--Categories--}}
     <section class="categories">
+
+        <div class="categories-overlay">
 
         <div class="container">
 
@@ -141,7 +148,7 @@
                         {{--Categories list head--}}
                         <div class="categories-list-head">
                             @foreach($categories as $category)
-                                <div class="collapse" id="collapse{{$category->id}}">gggggggggggggggggggggggggggggggggg
+                                <div class="@if($category->id == 1)collapse in @else collapse @endif" id="collapse{{$category->id}}">
                                     <div class="well text-center">
                                         @foreach($category->posts->take(5) as $post)
 
@@ -174,38 +181,8 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
-
-
-    {{--<div class="row">--}}
-        {{--<div class="col-md-8 col-md-offset-2">--}}
-            {{--<div class="post-index">--}}
-                {{--@foreach($posts as $post)--}}
-                    {{--<div class="post-index-single">--}}
-
-
-                        {{--<div class="image">--}}
-                            {{--<img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}"/>--}}
-                        {{--</div>--}}
-                        {{--<div class="artis-name">--}}
-                            {{--{{$post->artist_name}}--}}
-                        {{--</div>--}}
-                        {{--<div class="title">--}}
-                            {{--Title:<a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a>--}}
-                        {{--</div>--}}
-
-
-
-                        {{--<td>{!!str_limit(strip_tags($post->description), $limit = 50, $end = '...')!!}</td>--}}
-
-                    {{--</div>--}}
-                {{--@endforeach--}}
-
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-
 
 @endsection
 

@@ -44,20 +44,6 @@
 
 
             @endforeach
-                    {{--{{$post->artist_name}}--}}
-                    {{--<a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a>--}}
-                    {{--{{$post->category->name}}--}}
-                    {{--{{$post->description}}--}}
-                    {{--{{$post->img}}--}}
-                    {{--{{$post->created_at}}--}}
-
-
-
-
-
-
-
-
 
             </div>
             </div>

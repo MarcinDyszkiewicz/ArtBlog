@@ -8,6 +8,7 @@ use App\Comment;
 use App\User;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Mail;
 
@@ -19,7 +20,7 @@ class PagesController extends Controller
         $admin = Admin::all();
         $categories = Category::with('posts')->get();
 
-        return view('testIndex', ['posts' => $posts, 'admin' => $admin, 'categories' => $categories]);
+        return view('index', ['posts' => $posts, 'admin' => $admin, 'categories' => $categories]);
     }
 
     public function navBar()
@@ -94,5 +95,24 @@ class PagesController extends Controller
         $categories = Category::with('posts')->get();
 
         return view('testIndex', ['posts' => $posts, 'admin' => $admin, 'categories' => $categories]);
+    }
+
+    public function artistList()
+    {
+        $artists = Post::all()->groupBy('artist_name');
+//        $posts = DB::table('posts')
+//            ->where(function ($query) {
+//                $query->where('artist_name', '=', 'Rembrandt');
+//            })
+//            ->get();
+
+        return view('artistList', ['artists' => $artists]);
+    }
+
+    public function artistSingle($artist_name)
+    {
+        $posts = Post::where('artist_name', '=', $artist_name)->get();
+
+        return view('artistSingle', ['posts' => $posts]);
     }
 }

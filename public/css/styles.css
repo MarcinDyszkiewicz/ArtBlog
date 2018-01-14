@@ -56,7 +56,7 @@ p{
 .navbar-default .navbar-nav >.active>a:hover,
 .navbar-default .navbar-nav >.active>a:active,
 .navbar-default .navbar-nav >.active>a:focus{
-    background-color: transparent;
+    background-color: #e7e7e7;
     color: #0f0f0f;
 }
 
@@ -64,7 +64,6 @@ p{
 
 /* header */
 .header{
-    height: 100%;
     background-image: url("../img/LeonardoDaVinci_LastSupperOfJesus.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -155,6 +154,8 @@ p{
     -moz-background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
+    height: 100vh;
+    box-sizing:border-box;
 }
 .carousel-header h1{
     color: #FFFFFF;
@@ -168,6 +169,8 @@ p{
     background-color: rgba(31,31,31,0.9);
     padding-top: 1px;
     padding-bottom: 20px;
+    height: 100vh;
+    box-sizing:border-box;
 }
 .carousel-indicators{
     bottom: -10px;
@@ -206,8 +209,20 @@ p{
 /* categories */
 
 .categories{
+    background-image: url("../img/sunday_afternoon.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
     height: 100vh;
-    width: 100vw;
+    box-sizing:border-box;
+}
+.categories-overlay{
+    background-color: rgba(31,31,31,0.5);
+    height: 100vh;
     box-sizing:border-box;
 }
 .btn-show-more-category,
@@ -233,17 +248,14 @@ p{
     border-color: #129CF3;
     color: #FFFFFF;
 }
-.collapse.width {
-    height: auto;
-    -webkit-transition: width 0.35s ease;
-    -moz-transition: width 0.35s ease;
-    -o-transition: width 0.35s ease;
-    transition: width 0.35s ease;
+.collapse.in {
+    max-height: 85vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .categories-list-head-image img{
     padding: 5px;
 }
-
 
 /* Footer */
 .footer{

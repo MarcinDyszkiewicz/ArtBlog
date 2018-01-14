@@ -26,9 +26,9 @@
 
 {{--@yield('header')--}}
 {{-------header----------}}
-<header class="header">
+<header class="header" style="{{Request::is('/') ? "height: 100vh; box-sizing:border-box;" : ""}}">
 
-    <div class="header-overlay">
+    <div class="header-overlay" style="{{Request::is('/') ? "height: 100vh; box-sizing:border-box;" : ""}}">
 
         <div class="container">
 
@@ -52,7 +52,7 @@
 
                     <div class="header-text">
 
-                        title & destripction
+                        {{--title & destripction--}}
                         <h1>Blog for everybody who loves art</h1>
                         <p> Built with great love! </p>
 

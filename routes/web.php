@@ -54,7 +54,8 @@ Route::get('/contact', 'PagesController@contactPage')->name('contactPage');
 
 Route::get('/user/{id}', 'PagesController@userShow')->name('userShow');
 Route::get('/testindex', 'PagesController@testIndex');
-
+Route::get('/artistlist', 'PagesController@artistList')->name('artistList');
+Route::get('/artist/{artist_name}', 'PagesController@artistSingle')->name('artistSingle');
 //contact form
 Route::post('/contact', 'PagesController@contactPost')->name('contactPost');
 
