@@ -19,8 +19,6 @@
 
 @section('content')
 
-
-
     {{--Slider--}}
     <section class="slider">
 
@@ -52,7 +50,7 @@
                                 {{--item 1--}}
                                 <div class="item {{ $loop->first ? ' active' : '' }} text-center">
 
-                                    <img src="{{asset('/images/' . $post->img)}}" height="400" width="800" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block">
+                                    <img src="{{asset('/images/' . $post->img)}}" height="400" width="800" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive">
 
                                     <div class="slide-caption">
 
@@ -103,7 +101,7 @@
 
                 <div class="col-md-10">
 
-                    <div class="section-title text-center">
+                    <div class="categories-title text-center">
 
                         <h2> Categories</h2>
                         <p>Początek traktatu czasu być uważana.
@@ -131,12 +129,12 @@
 
                             <div class="list-group" id="accordion">
 
-                                <button type="button" class="list-group-item list-group-item-action active">
-                                    Cras justo odio
+                                {{--<button type="button" class="list-group-item list-group-item-action active">--}}
+                                {{--Cras justo odio--}}
                                 </button>
                                 @foreach($categories as $category)
 
-                                    <button type="button" class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapse{{$category->id}}" aria-expanded="true">{{$category->name}}</button>
+                                    <button type="button" class="list-group-item list-group-item-action @if($category->id == 1)active @else collapsed @endif" data-toggle="collapse" data-target="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">{{$category->name}}</button>
                                 @endforeach
 
                             </div>
@@ -148,15 +146,15 @@
                         {{--Categories list head--}}
                         <div class="categories-list-head">
                             @foreach($categories as $category)
-                                <div class="@if($category->id == 1)collapse in @else collapse @endif" id="collapse{{$category->id}}">
+                                <div class="panel-collapse @if($category->id == 1)collapse in @else collapse @endif" id="collapse{{$category->id}}" aria-expanded="false">
                                     <div class="well text-center">
                                         @foreach($category->posts->take(5) as $post)
 
-                                                <div class="categories-list-head-image"><a href="{{url('post/'.$post->slug)}}"><img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block"></a>
-                                                </div>
-                                                <p>{{$post->artist_name}} - {{$post->title}}</p>
+                                            <div class="categories-list-head-image"><a href="{{url('post/'.$post->slug)}}"><img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive"></a>
+                                            </div>
+                                            <p>{{$post->artist_name}} - {{$post->title}}</p>
 
-                                                <p>{{str_limit(strip_tags($post->description), $limit = 30, $end = '...')}}</p>
+                                            <p>{{str_limit(strip_tags($post->description), $limit = 30, $end = '...')}}</p>
 
 
                                         @endforeach
@@ -175,7 +173,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -196,15 +194,22 @@
 
     <script src="/js/index.js"></script>
 
-    {{--<script>--}}
-        {{--$('.list-group-item-action a').click(function() {--}}
-            {{--$('.list-group-item-action').removeClass('active');--}}
+<script>
+    $(document).ready(function() {
+    $('.panel-collapse').on('show.bs.collapse', function () {
+    $('button.collapsed').siblings().addClass('active');
+    });
 
-            {{--//If the panel was open and would be closed by this click, do not active it--}}
-            {{--if(!$(this).closest('.panel').find('.panel-collapse').hasClass('in'))--}}
-                {{--$(this).parents('.panel-heading').addClass('active');--}}
-        {{--});--}}
+    $('.panel-collapse').on('hide.bs.collapse', function () {
+    $('button').siblings().removeClass('active');
+    });
+    });
+//var $myGroup = $('#myGroup');
+//$myGroup.on('show','.collapse', function() {
+//    $myGroup.find('.collapse.in').collapse('hide');
+//});
 
-
-    {{--</script>--}}
+</script>
 @endsection
+
+jeśli zamknięty to ma .collapsed    wtedy    trzeba zabrac .active

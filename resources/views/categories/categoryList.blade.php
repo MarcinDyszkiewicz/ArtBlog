@@ -15,9 +15,6 @@
 
                             <div class="list-group" id="accordion">
 
-                                <button type="button" class="list-group-item list-group-item-action active">
-                                    Cras justo odio
-                                </button>
                                 @foreach($categories as $category)
 
                                     <button type="button" class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#collapse{{$category->id}}" data-parent="#accordion" href="#collapse{{$category->id}}" aria-expanded="true">{{$category->name}}</button>
@@ -40,7 +37,7 @@
 
                                         @foreach($category->posts->take(5) as $post)
 
-                                            <div class="categories-list-head-image"><a href="{{url('post/'.$post->slug)}}"><img src="{{asset('/images/' . $post->img)}}" height="250" width="500" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block"></a>
+                                            <div class="categories-list-head-image"><a href="{{url('post/'.$post->slug)}}"><img src="{{asset('/images/' . $post->img)}}" height="250" width="500" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive"></a>
                                             </div>
                                             <p>{{$post->artist_name}} - {{$post->title}}</p>
 

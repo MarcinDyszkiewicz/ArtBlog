@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Session;
 class CategoryController extends Controller
 {
 
-    //Middleware
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
+    public function __construct()
+    {
+        $this->middleware('admin')->except('categoryShow', 'categoryList');
+    }
 
 
     public function categoryList()

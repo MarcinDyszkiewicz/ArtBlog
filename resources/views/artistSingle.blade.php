@@ -22,7 +22,7 @@
 
                                 <div class="post-image">
 
-                                    <img src="{{asset('/images/' . $post->img)}}" height="300" width="600" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block">
+                                    <img src="{{asset('/images/' . $post->img)}}" height="300" width="600" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive">
 
                                 </div>
 

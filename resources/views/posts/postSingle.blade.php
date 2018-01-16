@@ -17,14 +17,14 @@
 
                                     <div class="post-image">
 
-                                        <img src="{{asset('/images/' . $post->img)}}" height="300" width="600" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block">
+                                        <img src="{{asset('/images/' . $post->img)}}" height="400" width="800" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive">
 
                                     </div>
 
 
                                     <div class="post-caption">
 
-                                        <p><span class="italic">by </span><a href="{{route('userShow', $post->user->id)}}">{{$post->user->name}}</a><span class="italic"> on </span>{{date('F d, Y', strtotime($post->created_at))}}</p>
+                                        <p><span class="italic">by </span><a href="{{route('userShow', $post->user->id)}}">{{$post->user->name}}</a><span class="italic"> on </span>{{date('d F, Y', strtotime($post->created_at))}}</p>
                                     </div>
                                         <h3><span>Artist Name: </span>{{$post->artist_name}}</h3>
 
@@ -56,7 +56,7 @@
                 {{Form::submit('Add comment', ['class' => 'btn btn-success btn-sm'])}}
                 {{Form::close()}}
             @else
-                Adding comments just for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to add comment.
+                Adding comments only for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to add comment.
             @endif
 
         </div>
@@ -71,10 +71,10 @@
                             This Post has no comments yet. Be the first one and add comment.
                         @endif
                     </div>
-
+                    <hr>
                     @foreach($post->comments as $comment)
-                        <hr>
-                        <div class="comment">
+
+                        <div class="comment col-md-12">
                             <div class="comment-user">
                                 user: <a href="{{route('userShow', $comment->user->id)}}"> {{$comment->user->name}}</a>
                             </div>
@@ -82,13 +82,13 @@
                                 comment: {{$comment->comment_body}}
                             </div>
                             <div class="comment-created-at">
-                                create at: {{$comment->created_at}}
+                                created at: {{date('d.m.Y', strtotime($comment->created_at))}}
                             </div>
 
 
-                            <div class="comment-reply">
-                                <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#add-reply">Reply to this comment</button>
-                                <div id="add-reply" class="collapse">
+                            <div class="comment-reply-form">
+                                <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#add-reply{{$comment->id}}">Reply to this comment</button>
+                                <div id="add-reply{{$comment->id}}" class="collapse">
                                     @if(Auth::check() || Auth::guard('admin')->check())
                                     {{Form::open(['route' => ['commentReplyStore', $comment->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
 
@@ -97,12 +97,32 @@
 
                                     {{Form::submit('Add reply', ['class' => 'btn btn-success btn-sm'])}}
                                     {{Form::close()}}
+
+
+                            @else
+                                Adding comments only for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to reply to this comment.
+                            @endif
+                                </div>
+                                <br>
+                            </div>
+
+
+                            @foreach($comment->commentReplies as $commentReply)
+                            <div class="comment-reply col-md-offset-1">
+
+                                <div class="comment-user">
+                                    user: <a href="{{route('userShow', $commentReply->user->id)}}"> {{$commentReply->user->name}}</a>
+                                <div class="comment-body">
+                                    comment: {{$commentReply->comment_reply_body}}
+                                <div class="comment-created-at">
+                                    created at: {{date('d.m.Y', strtotime($commentReply->created_at))}}
+                                </div>
+                                </div>
                                 </div>
                             </div>
-                            @else
-                                Adding comments just for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to reply to this comment.
-                            @endif
+                                <br>
                             @endforeach
+                        @endforeach
 
                         </div>
                         </div>

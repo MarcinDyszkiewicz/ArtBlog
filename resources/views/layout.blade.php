@@ -39,7 +39,7 @@
                     logo
                     <div class="logo text-center">
 
-                        <img src="{{asset('/img/logo1.png')}}" alt="logo">
+                        <img src="{{asset('/img/logo1.png')}}" alt="logo" class="img-responsive">
                     </div>
 
                 </div>
@@ -87,15 +87,6 @@
 @include('partials._messages')
 
 
-
-
-
-@yield('scripts')
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/js/bootstrap.min.js"></script>
-
 @yield('footer')
 <footer class="footer">
 
@@ -106,14 +97,24 @@
                     <p><a href="#">Marcin Dyszkiewicz Web Developer</a>, Copyright &copy; 2017-2018</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="scroll-top">
-                    <a href="#"><i class="fa fa-angle-up"></i></a>
-                </div>
-            </div>
+            {{--<div class="col-md-6">--}}
+                {{--<div class="scroll-top">--}}
+                    {{--<a href="#"><i class="fa fa-angle-up"></i></a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
     </div>
 
 </footer>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/js/bootstrap.min.js"></script>
+
+@yield('scripts')
+
+
 </body>
 </html>

@@ -20,10 +20,10 @@
                 <tr>
                     <td>{{$tag->name}}</td>
                     <td>{{$tag->posts()->count()}}</td>
-                    <td><a href="{{route('tagEdit', $tag->id)}}" class="btn btn-primary btn-block">Edit</a></td>
-                    <td>{{ Form::open(array('route' => ['tagDestroy', $tag->id], 'method' => 'DELETE'))}}
-                        {{Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) }}
-                        {{Form::close()}}</td>
+                    {{--<td><a href="{{route('tagEdit', $tag->id)}}" class="btn btn-primary btn-block">Edit</a></td>--}}
+                    {{--<td>{{ Form::open(array('route' => ['tagDestroy', $tag->id], 'method' => 'DELETE'))}}--}}
+                        {{--{{Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) }}--}}
+                        {{--{{Form::close()}}</td>--}}
                 </tr>
                 </tbody>
             </table>

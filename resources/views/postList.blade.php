@@ -4,13 +4,12 @@
 
 @section('content')
 
-<section class="page-body">
+    @component('partials._container')
+        @slot('slot1')
+            Post List
+        @endslot
 
-    <div class="container no-background" style="width: 60%">
-        <div class="row">
-            <div class="page-title text-center">
-                <h1>Post List</h1>
-            <div class="col-md-8 col-md-offset-2">
+        @slot('slot2')
 
                @foreach($posts as $post)
             <div class="post-box text-center">
@@ -23,7 +22,7 @@
 
                 <div class="post-image">
 
-                    <img src="{{asset('/images/' . $post->img)}}" height="300" width="600" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block">
+                    <img  src="{{asset('/images/' . $post->img)}}" height="300" width="600" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive">
 
                 </div>
 
@@ -43,13 +42,9 @@
 
 
 
-            @endforeach
+                @endforeach
 
             </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+        @endslot
+    @endcomponent
 @endsection

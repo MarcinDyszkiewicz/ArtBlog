@@ -249,13 +249,18 @@ p{
     color: #FFFFFF;
 }
 .collapse.in {
-    max-height: 85vh;
+    max-height: 60vh;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 .categories-list-head-image img{
     padding: 5px;
 }
+.list-group-item.list-group-item-action.active{
+    background-color: #ffd051;
+}
+
+.collapse.in { min-height: 50px;border: 1px solid blue; }
 
 /* Footer */
 .footer{
@@ -336,21 +341,66 @@ p{
 .comment-box{
     margin-top: 6vh;
     margin-bottom: 5vh;
-    border: groove 5px black;
 }
 #comment-form{
     padding-bottom: 3vh;
 }
-.comment{
+.comment-created-at{
+font-size: 11px;
 
 }
-
+.btn.btn-primary.btn-xs{
+    margin-bottom: 4vh;
+    margin-top: 0.5vh;
+}
 
 /* Rest */
 .btn .btn-success{
     margin-bottom: 10px;
 }
 
+/* Accordion */
+
+button.accordion {
+    width: 100%;
+    background-color: whitesmoke;
+    border: none;
+    outline: none;
+    text-align: left;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #444;
+    cursor: pointer;
+    transition: background-color 0.2s linear;
+}
+
+button.accordion:after {
+    content: '\f055';
+    /*font-family: "fontawesome";*/
+    font-size: 14px;
+    float: right;
+}
+
+button.accordion.is-open:after {
+    content: '\f056';
+}
+
+button.accordion:hover, button.accordion.is-open {
+    background-color: #ddd;
+}
+
+.accordion-content {
+    background-color: white;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in-out;
+}
+button.accordion.active{
+    background-color: yellow;
+}
 
 
 /*.navbar{*/
