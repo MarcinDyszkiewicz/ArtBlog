@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->integer('id_user');
             $table->string('artist_name');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('img')->nullable();
             $table->string('slug', 100)->unique();
             $table->integer('category_id')->nullable()->unsigned();

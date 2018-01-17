@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3" style="margin-top: 3vh">
             {{ Form::open() }}
 
             {{ Form::label('name', 'Name:') }}
@@ -21,7 +21,7 @@
             {{ Form::password('password_confirmation', ['class' => 'form-control']) }}
 
             <br>
-            {{ Form::submit('Register', ['class' => 'btn btn-primary btn-block']) }}
+            {{ Form::submit('Register', ['class' => 'btn btn-primary btn-block', 'style'=> 'margin-bottom: 3vh; margin-top: 1vh']) }}
 
 
             {{ Form::close() }}

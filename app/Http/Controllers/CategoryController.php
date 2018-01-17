@@ -12,7 +12,7 @@ class CategoryController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin')->except('categoryShow', 'categoryList');
+        $this->middleware('auth:admin')->except('categoryShow', 'categoryList');
     }
 
 

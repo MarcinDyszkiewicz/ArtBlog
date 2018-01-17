@@ -122,7 +122,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="border-bottom: 50vh">
 
                         {{--Caregoties menu--}}
                         <div class="categories-list-menu">
@@ -131,7 +131,7 @@
 
                                 {{--<button type="button" class="list-group-item list-group-item-action active">--}}
                                 {{--Cras justo odio--}}
-                                </button>
+                                {{--</button>--}}
                                 @foreach($categories as $category)
 
                                     <button type="button" class="list-group-item list-group-item-action @if($category->id == 1)active @else collapsed @endif" data-toggle="collapse" data-target="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">{{$category->name}}</button>
@@ -212,4 +212,4 @@
 </script>
 @endsection
 
-jeśli zamknięty to ma .collapsed    wtedy    trzeba zabrac .active
+{{--jeśli zamknięty to ma .collapsed    wtedy    trzeba zabrac .active--}}

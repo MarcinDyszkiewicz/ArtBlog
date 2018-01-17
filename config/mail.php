@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.zenbox.pl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@artblog.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'contact@marcin-dyszkiewicz.pl'),
         'name' => env('MAIL_FROM_NAME', 'ArtBlog'),
     ],
 
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('contact@marci-dyszkiewicz.pl'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('berbatov17'),
 
     /*
     |--------------------------------------------------------------------------

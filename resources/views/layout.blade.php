@@ -12,14 +12,14 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500i,600,700,700i,800,900|Source+Sans+Pro:300,300i,400,400i,600i,700,900" rel="stylesheet">
 
     <!-- Bootstrap & CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/parsley.css" rel="stylesheet">
-    <link href="/css/styles.css" rel="stylesheet">
+    <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/parsley.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/styles.css')}}" rel="stylesheet">
 
 
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="{{asset('https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')}}"></script>
+    <script src="{{asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js"')}}"></script>
 </head>
 <body>
 @include('partials._navBar')
@@ -36,7 +36,7 @@
 
                 <div class="col-md-12">
 
-                    logo
+                    {{--logo--}}
                     <div class="logo text-center">
 
                         <img src="{{asset('/img/logo1.png')}}" alt="logo" class="img-responsive">
@@ -111,7 +111,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/js/bootstrap.min.js"></script>
+<script src="{{asset('/js/bootstrap.min.js')}}"></script>
 
 @yield('scripts')
 
