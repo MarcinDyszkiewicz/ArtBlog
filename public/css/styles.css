@@ -17,6 +17,9 @@ p{
     font-size: 14px;
 }
 
+img{
+    max-width: 100%;
+}
 /* NavBar */
 .navbar-default{
     background-color: transparent;

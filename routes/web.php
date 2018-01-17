@@ -66,26 +66,19 @@ Route::get('/post/{slug}', ['as' => 'postSingle', 'uses' =>'PagesController@post
 
 
 //Post CRUD
-Route::get('/postcreate', 'PostController@postCreate')->name('postCreate');
-
-Route::get('/poststore', 'PostController@postStore');
-
-Route::post('/poststore', 'PostController@postStore')->name('postStore');
-
+Route::get('/postcreate', 'PostController@postCreate')->name('postCreate')->middleware('auth');
+Route::get('/poststore', 'PostController@postStore')->middleware('auth');
+Route::post('/poststore', 'PostController@postStore')->name('postStore')->middleware('auth');
 Route::get('/postshow/{id}', 'PostController@postShow')->name('postShow');
-
-Route::get('/postedit/{id}', 'PostController@postEdit')->name('postEdit');
-
-Route::get('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
-
-Route::put('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate');
-
-Route::delete('/postdestroy/{id}', 'PostController@postDestroy')->name('postDestroy');
+Route::get('/postedit/{id}', 'PostController@postEdit')->name('postEdit')->middleware('auth');
+Route::get('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate')->middleware('auth');
+Route::put('/posteupdate/{id}', 'PostController@postUpdate')->name('postUpdate')->middleware('auth');
+Route::delete('/postdestroy/{id}', 'PostController@postDestroy')->name('postDestroy')->middleware('auth');
 
 //Category CRUD
 Route::get('/categorylist', 'CategoryController@categoryList')->name('categoryList');
 Route::get('/categorycreate', 'CategoryController@categoryCreate')->name('categoryCreate');
-Route::get('/categorystore', 'CategoryController@categoryStore')->middleware('auth');
+Route::get('/categorystore', 'CategoryController@categoryStore');
 Route::post('/categorystore', 'CategoryController@categoryStore')->name('categoryStore');
 Route::get('/categoryshow/{id}', 'CategoryController@categoryShow')->name('categoryShow');
 Route::get('/categoryedit/{id}', 'CategoryController@categoryEdit')->name('categoryEdit');
@@ -102,11 +95,11 @@ Route::get('/tagshow/{id}', 'TagController@tagShow')->name('tagShow');
 Route::get('/tagedit/{id}', 'TagController@tagEdit')->name('tagEdit')->middleware('auth');
 Route::get('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->middleware('auth');
 Route::put('/tagupdate/{id}', 'TagController@tagUpdate')->name('tagUpdate')->middleware('auth');
-Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy')->middleware('auth');
+Route::delete('/tagdestroy/{id}', 'TagController@tagDestroy')->name('tagDestroy')->middleware('auth:admin');
 
 //Comments
-Route::post('/commentpost/{post_id}', 'CommentsController@commentStore')->name('commentStore');
-Route::get('/commentedit/{id}', 'CommentsController@commentEdit')->name('commentEdit');
+Route::post('/commentpost/{post_id}', 'CommentsController@commentStore')->name('commentStore')->middleware('auth');
+Route::get('/commentedit/{id}', 'CommentsController@commentEdit')->name('commentEdit')->middleware('auth');
 Route::get('/commenteditadmin/{id}', 'CommentsController@commentEditAdmin')->name('commentEditAdmin')->middleware('auth');
 Route::put('/commentupdate/{id}', 'CommentsController@commentUpdate')->name('commentUpdate')->middleware('auth');
 Route::get('/commentdelete/{id}', 'CommentsController@commentDelete')->name('commentDelete')->middleware('auth');
@@ -114,4 +107,4 @@ Route::delete('/commentdestroy/{id}', 'CommentsController@commentDestroy')->name
 Route::delete('/commentdestroyadmin/{id}', 'CommentsController@commentDestroyAdmin')->name('commentDestroyAdmin')->middleware('auth');
 
 //Comments reply
-Route::post('/commentreplypost/{comment_id}', 'CommentsController@commentReplyStore')->name('commentReplyStore');
+Route::post('/commentreplypost/{comment_id}', 'CommentsController@commentReplyStore')->name('commentReplyStore')->middleware('auth');

@@ -42,34 +42,34 @@
                                             </div>
                                 @endforeach
                             </div>
-                                        <button class="accordion">Accordian #1</button>
-                                        <div class="accordion-content">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
-                                            </p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
-                                            </p>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
-                                            </p>
-                                        </div>
+                                        {{--<button class="accordion">Accordian #1</button>--}}
+                                        {{--<div class="accordion-content">--}}
+                                            {{--<p>--}}
+                                                {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?--}}
+                                            {{--</p>--}}
+                                            {{--<p>--}}
+                                                {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?--}}
+                                            {{--</p>--}}
+                                            {{--<p>--}}
+                                                {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?--}}
+                                            {{--</p>--}}
+                                        {{--</div>--}}
 
 
-                                        <button class="accordion">Accordian #2</button>
-                                        <div class="accordion-content">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
-                                            </p>
-                                        </div>
+                                        {{--<button class="accordion">Accordian #2</button>--}}
+                                        {{--<div class="accordion-content">--}}
+                                            {{--<p>--}}
+                                                {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?--}}
+                                            {{--</p>--}}
+                                        {{--</div>--}}
 
 
-                                        <button class="accordion">Accordian #3</button>
-                                        <div class="accordion-content">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?
-                                            </p>
-                                        </div>
+                                        {{--<button class="accordion">Accordian #3</button>--}}
+                                        {{--<div class="accordion-content">--}}
+                                            {{--<p>--}}
+                                                {{--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas deleniti molestias necessitatibus quaerat quos incidunt! Quas officiis repellat dolore omnis nihil quo, ratione cupiditate! Sed, deleniti, recusandae! Animi, sapiente, nostrum?--}}
+                                            {{--</p>--}}
+                                        {{--</div>--}}
 
 
 

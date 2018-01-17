@@ -40,12 +40,14 @@
 
                                 <p><span>Category:</span> <a href="{{route('categoryShow', $post->category->id)}}">{{$post->category->name}}</a></p>
 
+                                @if(auth()->id() == $post->id_user)
                                 <p>@foreach($post->tags as $tag) <a class="label label-default" href="{{route('tagShow', $tag->id)}}" style="margin: 2px"> {{$tag->name}} </a>@endforeach</p>
                                 <p><a href="{{route('postEdit', $post->id)}}" class="btn btn-primary">Edit</a>
-                                    {{ Form::open(array('route' => ['postDestroy', $post->id], 'method' => 'DELETE'))}}
+                                    {{Form::open(array('route' => ['postDestroy', $post->id], 'method' => 'DELETE'))}}
                                     {{Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                                     {{Form::close()}}
                                 </p>
+                                    @endif
                             </div>
                             @endforeach
                         </div>

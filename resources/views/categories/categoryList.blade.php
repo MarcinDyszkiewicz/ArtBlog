@@ -60,9 +60,9 @@
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                        @endforeach
 
+                        @endforeach
+                        </div>
 
 @endslot
 @endcomponent

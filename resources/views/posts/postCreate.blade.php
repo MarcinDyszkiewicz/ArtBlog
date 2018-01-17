@@ -76,7 +76,7 @@
                 placeholder: "Select or add tags",
                 tags: true,
                 tokenSeparators: [',', ' '],
-//                minimumInputLength: 2,
+                minimumInputLength: 2,
                 maximumSelectionLength: 20,
                 createTag: function(newTag) {
                     return {

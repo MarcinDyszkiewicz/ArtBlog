@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <link href="/css/select2.min.css" rel="stylesheet">
+    <link href="{{asset('/css/select2.min.css')}}" rel="stylesheet">
     <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
     <section class="page-body">
@@ -62,13 +62,14 @@
     </section>
 @endsection
 
-@section('scripts')
+@section('footer')
+
 @endsection
 
-@section('footer')
+@section('scripts')
     {{--<link href="{{ asset('/public/js/select2.min.js') }}">--}}
 
-    <script src="/js/select2.min.js"></script>
+    <script src="{{asset('/js/select2.min.js')}}"></script>
     <script>
 
         $(document).ready(function() {

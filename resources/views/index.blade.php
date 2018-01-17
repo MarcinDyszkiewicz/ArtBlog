@@ -26,7 +26,8 @@
 
             {{--<div class="container">--}}
 
-                <div class="row">
+                <div class="row" style="margin-right:0; margin-left:0">
+                <div class="row" style="margin-right:0; margin-left:0">
 
                     <div class="col-md-12">
 
@@ -120,7 +121,7 @@
 
             <div class="container">
 
-                <div class="row">
+                <div class="row"">
 
                     <div class="col-md-6" style="border-bottom: 50vh">
 
@@ -147,7 +148,7 @@
                         <div class="categories-list-head">
                             @foreach($categories as $category)
                                 <div class="panel-collapse @if($category->id == 1)collapse in @else collapse @endif" id="collapse{{$category->id}}" aria-expanded="false">
-                                    <div class="well text-center">
+                                    <div class="well text-center" style="margin-bottom: 0">
                                         @foreach($category->posts->take(5) as $post)
 
                                             <div class="categories-list-head-image"><a href="{{url('post/'.$post->slug)}}"><img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive"></a>
@@ -173,8 +174,8 @@
                                         </div>
                                     </div>
                                 </div>
-                        </div>
                         @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
