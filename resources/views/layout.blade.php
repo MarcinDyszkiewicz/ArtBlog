@@ -113,6 +113,12 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{asset('/js/bootstrap.min.js')}}"></script>
 
+<script>
+$(window).on('resize', function () {
+$('.class1').toggleClass('class2', $(window).width() < 768);
+});
+</script>
+
 @yield('scripts')
 
 

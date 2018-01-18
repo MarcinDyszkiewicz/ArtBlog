@@ -27,7 +27,6 @@
             {{--<div class="container">--}}
 
                 <div class="row" style="margin-right:0; margin-left:0">
-                <div class="row" style="margin-right:0; margin-left:0">
 
                     <div class="col-md-12">
 
@@ -58,7 +57,7 @@
                                         <h4><span>Artist Name:</span></h4><h2>{{$post->artist_name}}</h2>
                                         <h4><span>Title:</span></h4><h3>:<a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></h3>
                                         {{--<h4><a href="{{route('userShow', $post->id_user)}}"> See author</a></h4>--}}
-                                        <h4>{{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}
+                                        <h4>{{str_limit(strip_tags($post->description), $limit = 80, $end = '...')}}
                                         </h4>
                                         <p><span class="italic">by </span><a href="{{route('userShow', $post->user->id)}}">{{$post->user->name}}</a><span class="italic"> on </span>{{date('F d, Y', strtotime($post->created_at))}}</p>
 
@@ -104,7 +103,7 @@
 
                     <div class="categories-title text-center">
 
-                        <h2> Categories</h2>
+                        <h2>Categories</h2>
                         <p>Początek traktatu czasu być uważana.
                             Dopiero możemy nazwać wszechdostatecznością.
                         </p>
@@ -121,24 +120,21 @@
 
             <div class="container">
 
-                <div class="row"">
+                <div class="row">
 
                     <div class="col-md-6" style="border-bottom: 50vh">
 
                         {{--Caregoties menu--}}
                         <div class="categories-list-menu">
 
-                            <div class="list-group" id="accordion">
+                            <ul class="nav nav-pills nav-stacked">
 
-                                {{--<button type="button" class="list-group-item list-group-item-action active">--}}
-                                {{--Cras justo odio--}}
-                                {{--</button>--}}
                                 @foreach($categories as $category)
 
-                                    <button type="button" class="list-group-item list-group-item-action @if($category->id == 1)active @else collapsed @endif" data-toggle="collapse" data-target="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">{{$category->name}}</button>
-                                @endforeach
+                                    <li><a data-toggle="pill" class="list-group-item list-group-item-action @if($category->id == 1)active @endif" href="#tab-{{ $category->id }}">{{$category->name}}</a></li>
 
-                            </div>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
 
@@ -146,35 +142,41 @@
 
                         {{--Categories list head--}}
                         <div class="categories-list-head">
-                            @foreach($categories as $category)
-                                <div class="panel-collapse @if($category->id == 1)collapse in @else collapse @endif" id="collapse{{$category->id}}" aria-expanded="false">
-                                    <div class="well text-center" style="margin-bottom: 0">
-                                        @foreach($category->posts->take(5) as $post)
+                                            <div class="tab-content text-center index">
 
-                                            <div class="categories-list-head-image"><a href="{{url('post/'.$post->slug)}}"><img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive"></a>
-                                            </div>
-                                            <p>{{$post->artist_name}} - {{$post->title}}</p>
+                                                @foreach($categories as $category)
+                                                    <div id="tab-{{ $category->id }}" class="tab-pane @if($category->id == 1)active @endif">
 
-                                            <p>{{str_limit(strip_tags($post->description), $limit = 30, $end = '...')}}</p>
+                                                        <div class="collapse in">
+                                                            @foreach($category->posts->take(5) as $post)
+                                                                <div class="categories-list-head-image"><a href="{{url('post/'.$post->slug)}}"><img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive"></a>
+                                                                </div>
+                                                                <p>{{$post->artist_name}} - {{$post->title}}</p>
 
+                                                                <p>{{str_limit(strip_tags($post->description), $limit = 30, $end = '...')}}</p>
+                                                            @endforeach
+                                                        </div>
 
-                                        @endforeach
+                                                    </div>
+
+                                                @endforeach
 
                                         <div class="categories-list-body">
 
                                             {{--category list of post--}}
                                             <div class="categories-list-posts">
 
-
                                                 <div class="categories-list-posts-btn">
                                                     <a class="btn btn-show-more-category" href="{{route('categoryShow', $category->id)}}"> Show All </a>
                                                 </div>
 
+
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                        @endforeach
+
+
+                                        </div>
+
                         </div>
                     </div>
                 </div>
@@ -195,22 +197,46 @@
 
     <script src="/js/index.js"></script>
 
-<script>
-    $(document).ready(function() {
-    $('.panel-collapse').on('show.bs.collapse', function () {
-    $('button.collapsed').siblings().addClass('active');
-    });
+{{--<script>--}}
+    {{--$(document).ready(function() {--}}
+    {{--$('.panel-collapse').on('show.bs.collapse', function () {--}}
+    {{--$('button.collapsed').siblings().addClass('active');--}}
+    {{--});--}}
 
-    $('.panel-collapse').on('hide.bs.collapse', function () {
-    $('button').siblings().removeClass('active');
-    });
-    });
-//var $myGroup = $('#myGroup');
-//$myGroup.on('show','.collapse', function() {
-//    $myGroup.find('.collapse.in').collapse('hide');
-//});
+    {{--$('.panel-collapse').on('hide.bs.collapse', function () {--}}
+    {{--$('button').siblings().removeClass('active');--}}
+    {{--});--}}
+    {{--});--}}
+{{--</script>--}}
+    {{--<script>--}}
+    {{--document.addEventListener("DOMContentLoaded", function(event) {--}}
 
-</script>
+
+        {{--var acc = document.getElementsByClassName("accordion");--}}
+        {{--var panel = document.getElementsByClassName('panel');--}}
+
+        {{--for (var i = 0; i < acc.length; i++) {--}}
+            {{--acc[i].onclick = function() {--}}
+                {{--var setClasses = !this.classList.contains('active');--}}
+                {{--setClass(acc, 'active', 'remove');--}}
+                {{--setClass(panel, 'show', 'remove');--}}
+
+                {{--if (setClasses) {--}}
+                    {{--this.classList.toggle("active");--}}
+                    {{--this.nextElementSibling.classList.toggle("show");--}}
+                {{--}--}}
+            {{--}--}}
+        {{--}--}}
+
+        {{--function setClass(els, className, fnName) {--}}
+            {{--for (var i = 0; i < els.length; i++) {--}}
+                {{--els[i].classList[fnName](className);--}}
+            {{--}--}}
+        {{--}--}}
+
+    {{--});--}}
+{{--</script>--}}
+
 @endsection
 
 {{--jeśli zamknięty to ma .collapsed    wtedy    trzeba zabrac .active--}}

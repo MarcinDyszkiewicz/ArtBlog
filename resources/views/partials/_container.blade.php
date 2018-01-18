@@ -1,6 +1,6 @@
 <section class="page-body">
 
-    <div class="container no-background" style="width: 60%">
+    <div class="container no-background">
         <div class="row">
             <div class="page-title text-center">
                 <h1>{{$slot1}}</h1>

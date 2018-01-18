@@ -268,3 +268,30 @@
 
     </script>
 @endsection
+
+
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <button type="button" class="panel-heading list-group-item " data-toggle="collapse" data-parent="#accordion" href="#collapse{{$posts[0]->id}}">
+            <h4 class="panel-title text-center">
+                <a>{{($posts[0]->artist_name)}} ({{count($posts)}})</a>
+            </h4>
+        </button>
+        <div id="collapse{{$posts[0]->id}}" class="panel-collapse collapse">
+            <div class="panel-body">
+
+                @foreach($posts->take(4) as $post)
+                    <a href="{{url('post/'.$post->slug)}}">
+                        <img src="{{asset('/images/' . $post->img)}}" height="200" width="400" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive">
+                    </a>
+
+                    <p><span>Title:</span> <a href="{{url('post/'.$post->slug)}}">{{$post->title}}</a></p>
+                @endforeach
+
+                <hr>
+                <p><a href="{{route('artistSingle', $post->artist_name)}}">Show All Posts With Works of Arts of This Artist</a></p>
+
+            </div>
+        </div>
+    </div>

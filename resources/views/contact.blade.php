@@ -7,7 +7,7 @@
 @section('content')
 
     <section class="page-body">
-        <div class="container no-background" style="width:60%">
+        <div class="container no-background">
             <div id="main-col" class="contact-container">
                 <div class="page-title">
                 <h1 class="text-center">Contact Me</h1>

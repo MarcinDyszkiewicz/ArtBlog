@@ -62,7 +62,9 @@ img{
     background-color: #e7e7e7;
     color: #0f0f0f;
 }
-
+/*.container.no-background{*/
+    /*width: 60%;*/
+/*}*/
 
 
 /* header */
@@ -252,10 +254,10 @@ img{
     color: #FFFFFF;
 }
 .collapse.in {
-    max-height: 60vh;
-    overflow-y: scroll;
+
     overflow-x: hidden;
 }
+
 .categories-list-head-image img{
     padding: 5px;
 }
@@ -263,7 +265,16 @@ img{
     background-color: #ffd051;
 }
 
-.collapse.in { min-height: 50px;border: 1px solid blue; }
+.collapse.in { min-height: 50px;
+}
+.tab-content.text-center.index{
+    background-color: whitesmoke;
+    max-height: 80vh;
+    overflow-y: scroll;
+    margin-top: 2vh;
+    border-radius: 3px;
+    padding:2vh
+}
 
 /* Footer */
 .footer{
@@ -362,107 +373,55 @@ font-size: 11px;
     margin-bottom: 10px;
 }
 
-/* Accordion */
-
-button.accordion {
-    width: 100%;
-    background-color: whitesmoke;
-    border: none;
-    outline: none;
-    text-align: left;
-    padding: 15px 20px;
-    font-size: 18px;
-    color: #444;
-    cursor: pointer;
-    transition: background-color 0.2s linear;
-}
-
-button.accordion:after {
-    content: '\f055';
-    /*font-family: "fontawesome";*/
-    font-size: 14px;
-    float: right;
-}
-
-button.accordion.is-open:after {
-    content: '\f056';
-}
-
-button.accordion:hover, button.accordion.is-open {
-    background-color: #ddd;
-}
-
-.accordion-content {
-    background-color: white;
-    border-left: 1px solid whitesmoke;
-    border-right: 1px solid whitesmoke;
-    padding: 0 20px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-in-out;
-}
-button.accordion.active{
-    background-color: yellow;
-}
 
 
-/*.navbar{*/
-    /*background-color: #1b6d85;*/
-    /*color: #ffffff;*/
-/*}*/
-/*.navbar-default .navbar-brand{*/
-    /*color: #ffffff;*/
-    /*font-size: 20px;*/
-    /*line-height: 70px;*/
-    /*height: 70px;*/
-/*}*/
-/*.navbar-default .navbar-nav li a{*/
-    /*color: #ffffff;*/
-    /*line-height: 70px;*/
-    /*height: 70px;*/
-/*}*/
-/*.navbar-nav>li>.dropdown-menu{*/
-    /*background-color: #1b6d85;*/
-/*}*/
-/*.navbar-brand,*/
-/*.navbar-nav li a {*/
-    /*line-height: 150px;*/
-    /*height: 150px;*/
-    /*padding-top: 0;*/
-/*}*/
-/*.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {*/
-    /*color: #120000;*/
-/*}*/
-/*.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {*/
-    /*background-color: #FFFFFF;*/
-/*}*/
-/*.navbar-default .navbar-brand:hover{*/
-    /*color: #0f0f0f;*/
+
+
+/*#showcase h1 {*/
+    /*margin-top: 40px;*/
+    /*font-size: 60px;*/
 /*}*/
 
-/*#showcase {*/
-    /*min-height: 400px;*/
-    /*background: url('../images/LeonardoDaVinci _ LastSupperOfJesus.jpg') no-repeat;*/
-    /*background-size: 100% 100%;*/
+
+
+/*.post-index{*/
+    /*padding:10px;*/
     /*text-align: center;*/
-    /*color: #FFFFFF;*/
+    /*background-color: #b2dba1;*/
 /*}*/
-#showcase h1 {
-    margin-top: 40px;
-    font-size: 60px;
+
+/*.post-index-single{*/
+    /*padding:50px;*/
+    /*text-align: center;*/
+    /*border: double 10px;*/
+/*}*/
+
+@media(max-width: 768px){
+    .container.no-background,
+    .post-caption p
+    {
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+    .page-title.text-center{
+        font-size: 25px;
+    }
+    .post-header h2 a{
+        font-size: 20px;
+    }
+    .tab-content.text-center{
+        max-height: 100px;
+    }
+    .btn.btn-tour{
+        display: none;
+    }
+    .tab-content.text-center.index{
+        max-height: 400px;
+    }
 }
-
-
-
-.post-index{
-    padding:10px;
-    text-align: center;
-    background-color: #b2dba1;
+@media(max-width: 376px){
+    .tab-content.text-center.index{
+        max-height: 340px;
+    }
 }
-
-.post-index-single{
-    padding:50px;
-    text-align: center;
-    border: double 10px;
-}
-
