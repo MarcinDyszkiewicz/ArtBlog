@@ -62,9 +62,9 @@ img{
     background-color: #e7e7e7;
     color: #0f0f0f;
 }
-/*.container.no-background{*/
-    /*width: 60%;*/
-/*}*/
+.container.no-background{
+    width: 60%;
+}
 
 
 /* header */
