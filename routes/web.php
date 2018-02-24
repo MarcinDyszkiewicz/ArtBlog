@@ -108,3 +108,15 @@ Route::delete('/commentdestroyadmin/{id}', 'CommentsController@commentDestroyAdm
 
 //Comments reply
 Route::post('/commentreplypost/{comment_id}', 'CommentsController@commentReplyStore')->name('commentReplyStore')->middleware('auth');
+
+
+
+//Book - zadanie
+Route::get('/bookhome', 'BooksController@index')->name('bookHome');
+Route::get('/bookcreate', 'BooksController@create')->name('bookCreate');
+Route::get('/bookstore', 'BooksController@store');
+Route::post('/bookstore', 'BooksController@store')->name('bookStore');
+Route::get('/bookedit/{id}', 'BooksController@edit')->name('bookEdit');
+Route::get('/bookupdate/{id}', 'BooksController@update');
+Route::put('/bookupdate/{id}', 'BooksController@update')->name('bookUpdate');
+Route::delete('/bookdelete/{id}', 'BooksController@destroy')->name('bookDelete');
