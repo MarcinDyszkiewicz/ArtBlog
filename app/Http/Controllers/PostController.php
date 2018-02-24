@@ -38,7 +38,7 @@ class PostController extends Controller
 
     public function postStore(Request $request)
     {
-        ;
+
 
         $this->validate($request, array(
             'artist_name' => 'required|max:80',
