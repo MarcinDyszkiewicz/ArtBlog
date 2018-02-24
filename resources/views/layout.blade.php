@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Marcin Dyszkiewicz">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Art Blog @yield('title')</title>
 
     {{--Fonts--}}
