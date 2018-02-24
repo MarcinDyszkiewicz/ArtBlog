@@ -11,31 +11,31 @@
 
         @slot('slot2')
 
-                                <div class="single-post-box text-center">
-                                    <div class="post-header ">
+                                    <div class="single-post-box text-center">
+                                        <div class="post-header ">
 
 
-                                    <div class="post-image">
+                                        <div class="post-image">
 
-                                        <img src="{{asset('/images/' . $post->img)}}" height="400" width="800" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive">
+                                            <img src="{{asset('/images/' . $post->img)}}" height="400" width="800" alt="{{$post->artist_name . " _ " . $post->title}}" class="center-block img-responsive">
 
-                                    </div>
+                                        </div>
 
 
-                                    <div class="post-caption">
+                                        <div class="post-caption">
 
-                                        <p><span class="italic">by </span><a href="{{route('userShow', $post->user->id)}}">{{$post->user->name}}</a><span class="italic"> on </span>{{date('d F, Y', strtotime($post->created_at))}}</p>
-                                    </div>
-                                        <h3><span>Artist Name: </span>{{$post->artist_name}}</h3>
+                                            <p><span class="italic">by </span><a href="{{route('userShow', $post->user->id)}}">{{$post->user->name}}</a><span class="italic"> on </span>{{date('d F, Y', strtotime($post->created_at))}}</p>
+                                        </div>
+                                            <h3><span>Artist Name: </span>{{$post->artist_name}}</h3>
 
-                                        <h3><span>Title:</span> {{$post->title}}</h3>
+                                            <h3><span>Title:</span> {{$post->title}}</h3>
 
-                                        <h4><span>Description:</span> {{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}</h4>
+                                            <h4><span>Description:</span> {{str_limit(strip_tags($post->description), $limit = 50, $end = '...')}}</h4>
 
-                                        <p><span>Category:</span> <a href="{{route('categoryShow', $post->category->id)}}">{{$post->category->name}}</a></p>
+                                            <p><span>Category:</span> <a href="{{route('categoryShow', $post->category->id)}}">{{$post->category->name}}</a></p>
 
-                                        <p>@foreach($post->tags as $tag) <a class="label label-default" href="{{route('tagShow', $tag->id)}}" style="margin: 2px"> {{$tag->name}} </a>@endforeach</p>
-                                    </div>
+                                            <p>@foreach($post->tags as $tag) <a class="label label-default" href="{{route('tagShow', $tag->id)}}" style="margin: 2px"> {{$tag->name}} </a>@endforeach</p>
+                                        </div>
 
 
 
@@ -43,7 +43,7 @@
 
 
 <hr>
-<div class="comment-box text-left">
+<div id="app" class="comment-box text-left">
 
     <div class="row">
         <div id="comment-form" class="col-md-12">
@@ -93,7 +93,7 @@
                                     {{Form::open(['route' => ['commentReplyStore', $comment->id], 'method' => 'POST', 'data-parsley-validate' => ''])}}
 
                                     {{Form::label('comment_reply_body', 'Comment:')}}
-                                    {{Form::text('comment_reply_body', null, ['cass' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
+                                    {{Form::text('comment_reply_body', null, ['class' => 'form-control', 'required' => '', 'maxlength' =>"200"])}}
 
                                     {{Form::submit('Add reply', ['class' => 'btn btn-success btn-sm'])}}
                                     {{Form::close()}}
@@ -127,7 +127,34 @@
                         </div>
                         </div>
                         </div>
+
+
+
+
+    <div class="test" v-for="comment in comments">
+        <div class="comment col-md-12">
+            <div class="comment-user">
+                {{--user: <a href="{{route('userShow', $comment->user->id)}}"> @{{comment.user.name}}</a>--}}
+            </div>
+            <div class="comment-body">
+                comment: @{{comment.comment_body}}
+            </div>
+            {{--<div class="comment-created-at">--}}
+                {{--created at: @{{date('d.m.Y', strtotime(comment.created_at))}}--}}
+            {{--</div>--}}
+    </div>
                 </div>
+
+
+    <div id="comment-form" class="col-md-12">
+        @if(Auth::check() || Auth::guard('admin')->check())
+            <textarea class="form-control" name="comment_body" placeholder="Leave a Comment" v-model="commentBox"></textarea>
+            <button class="btn btn-success btn-sm" @click.prevent="postComment">Save Comment</button>
+        @else
+            Adding comments only for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to add comment.
+        @endif
+
+    </div>
             </div>
 
 
@@ -136,4 +163,51 @@
 
         @endslot
     @endcomponent
+@endsection
+@section('footer')
+    @endsection
+
+@section('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                comments: {!! $post->comments->toJson() !!},
+                commentBox: "",
+                post: {!! $post->toJson() !!},
+                user: {!! Auth::check() || Auth::guard('admin')->check() ? Auth::user()->toJson() : 'null' !!}
+            },
+            mounted(){
+                this.getComments();
+            },
+            methods: {
+                getComments(){
+                    axios.get('/api/posts/'+this.post.slug+'/comments')
+                        .then((response) => {
+                            this.comments = response.data
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                },
+                postComment(){
+                    axios.post('/api/post/'+this.post.slug+'/comment', {
+                        api_token: this.user.api_token,
+                        comment_body: this.commentBox
+                    })
+                        .then((response) => {
+                            this.comments.unshift(response.data);
+                            this.commentBox = '';
+                    })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                }
+            }
+        })
+
+
+    </script>
 @endsection

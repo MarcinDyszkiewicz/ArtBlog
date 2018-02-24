@@ -135,22 +135,28 @@ class CommentsController extends Controller
     public function commentAjaxIndex(Post $post)
     {
 
-        return response()->json($post->comments()->with('user')->latest()->get());
+        return response()->json($post->comments()->with('user')->get());
     }
 
-    public function commentAjaxStore(Request $request, Post $post)
+    public function commentAjaxStore(Request $request, $slug)
     {
+//        dd($slug);
+        $post = Post::where('slug', $slug)->first();
+//        dd($post->id);
 
         $this->validate($request, array(
             'comment_body' => 'required|max:200'
         ));
 
-        $comment = $post->comments()->create([
-            'comment_body' => $request->body,
-            'user_id' => Auth::id()
+        $comment = Comment::create([
+            'comment_body' => $request->comment_body,
+            'user_id' => 1,
+            'post_id' => $post->id
         ]);
+//        dd($comment);
+//        $comment = Comment::where('id', $comment->id)->with('user')->first();
 
-        $comment = Comment::where('id', $comment->id)->with('user')->first();
+        Session::flash('success','Comment was added!');
 
         return $comment->toJson();
     }

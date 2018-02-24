@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('post/{post}/comments', 'CommentsController@commentAjaxIndex');
-Route::middleware('auth:api')->group(function () {
-    Route::post('post/{post}/comment', 'CommentsController@commentAjaxStore');
-});
+Route::get('post/{slug}/comments', 'CommentsController@commentAjaxIndex');
+//Route::middleware('auth:api')->group(function () {
+    Route::post('post/{slug}/comment', 'CommentsController@commentAjaxStore');
+//});
