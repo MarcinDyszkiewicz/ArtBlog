@@ -147,12 +147,16 @@
 
 
     <div id="comment-form" class="col-md-12">
-        @if(Auth::check() || Auth::guard('admin')->check())
+        <div v-if="user">
+        {{--@if(Auth::check() || Auth::guard('admin')->check())--}}
             <textarea class="form-control" name="comment_body" placeholder="Leave a Comment" v-model="commentBox"></textarea>
             <button class="btn btn-success btn-sm" @click.prevent="postComment">Save Comment</button>
-        @else
+        </div>
+        {{--@else--}}
+            <div v-else>
             Adding comments only for registered users. <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">make new account</a> to add comment.
-        @endif
+            </div>
+         {{--@endif--}}
 
     </div>
             </div>
@@ -195,10 +199,11 @@
                 postComment(){
                     axios.post('/api/post/'+this.post.slug+'/comment', {
                         api_token: this.user.api_token,
-                        comment_body: this.commentBox
+                        comment_body: this.commentBox,
+                        user_id: {!! Auth::check() || Auth::guard('admin')->check() ? Auth::id() : 'null' !!}
                     })
                         .then((response) => {
-                            this.comments.unshift(response.data);
+                            this.comments.push(response.data);
                             this.commentBox = '';
                     })
                         .catch(function (error) {

@@ -140,7 +140,7 @@ class CommentsController extends Controller
 
     public function commentAjaxStore(Request $request, $slug)
     {
-//        dd($slug);
+//        dd($request);
         $post = Post::where('slug', $slug)->first();
 //        dd($post->id);
 
@@ -150,13 +150,13 @@ class CommentsController extends Controller
 
         $comment = Comment::create([
             'comment_body' => $request->comment_body,
-            'user_id' => 1,
+            'user_id' => $request->user_id,
             'post_id' => $post->id
         ]);
 //        dd($comment);
 //        $comment = Comment::where('id', $comment->id)->with('user')->first();
 
-        Session::flash('success','Comment was added!');
+
 
         return $comment->toJson();
     }
