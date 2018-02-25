@@ -134,15 +134,13 @@ class CommentsController extends Controller
 
     public function commentAjaxIndex(Post $post)
     {
-
         return response()->json($post->comments()->with('user')->get());
     }
 
     public function commentAjaxStore(Request $request, $slug)
     {
-//        dd($request);
         $post = Post::where('slug', $slug)->first();
-//        dd($post->id);
+
 
         $this->validate($request, array(
             'comment_body' => 'required|max:200'

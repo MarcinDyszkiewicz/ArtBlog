@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Comment;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -15,14 +16,16 @@ class NewComment implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $comment;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Comment $comment)
     {
-        //
+            $this->comment = $comment;
     }
 
     /**
@@ -32,6 +35,17 @@ class NewComment implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('posts');
+        return new Channel('post.'.$comment->post->slug);
+    }
+
+    public function broadcastWith()
+    {
+        return [
+            'comment_body' => $this->comment->comment_body,
+            'created_at' => $this->comment->created_at->toFormattedDateString(),
+            'user' => [
+                'name' => $this->comment->user->name
+            ]
+        ];
     }
 }

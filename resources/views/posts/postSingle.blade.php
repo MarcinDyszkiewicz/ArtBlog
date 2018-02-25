@@ -188,7 +188,7 @@
             },
             methods: {
                 getComments(){
-                    axios.get('/api/posts/'+this.post.slug+'/comments')
+                    axios.get('/api/post/'+this.post.slug+'/comments')
                         .then((response) => {
                             this.comments = response.data
                         })
